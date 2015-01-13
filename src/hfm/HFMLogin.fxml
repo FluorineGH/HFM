@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label alignment="CENTER" layoutX="7.0" layoutY="10.0" prefHeight="61.0" prefWidth="380.0" text="Hedge Fund Manager" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <VBox alignment="CENTER" layoutX="80.0" layoutY="74.0" prefHeight="187.0" prefWidth="240.0" spacing="15.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0">
+         <children>
+            <HBox layoutX="78.0" layoutY="101.0" spacing="10.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" layoutX="78.0" layoutY="105.0" prefHeight="25.0" prefWidth="80.0" text="Fund Name">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="nameField" layoutX="174.0" layoutY="101.0" promptText="Enter Fund Name" />
+               </children>
+            </HBox>
+            <HBox layoutX="84.0" layoutY="130.0" spacing="10.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" layoutX="84.0" layoutY="130.0" prefHeight="25.0" prefWidth="80.0" text="Password">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="passField" layoutX="174.0" layoutY="138.0" promptText="Enter Password" />
+               </children>
+            </HBox>
+            <Button fx:id="loginButton" alignment="CENTER" layoutX="174.0" layoutY="176.0" mnemonicParsing="false" onAction="#loginButtonAction" prefWidth="100.0" text="Login" />
+            <Button fx:id="newButton" alignment="CENTER" layoutX="174.0" layoutY="215.0" mnemonicParsing="false" onAction="#newButtonAction" prefWidth="100.0" text="New Account" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

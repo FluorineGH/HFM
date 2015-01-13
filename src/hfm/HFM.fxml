@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane fx:id="gamePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hfm.HFMController">
+   <children>
+      <SplitPane dividerPositions="0.1994991652754591, 0.835559265442404" layoutX="153.0" layoutY="224.0" prefHeight="800.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane maxWidth="236.0" minHeight="0.0" minWidth="236.0" prefHeight="798.0" prefWidth="236.0">
+               <children>
+                  <SplitPane dividerPositions="0.31532663316582915" layoutX="68.0" layoutY="272.0" orientation="VERTICAL" prefHeight="798.0" prefWidth="240.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <TableView fx:id="stats" layoutX="-4.0" layoutY="48.0" prefHeight="199.0" prefWidth="232.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+                                <columns>
+                                  <TableColumn prefWidth="47.0" text="Rank" />
+                                  <TableColumn prefWidth="118.0" text="Fund" />
+                                    <TableColumn prefWidth="68.0" text="Value" />
+                                </columns>
+                              </TableView>
+                              <Label alignment="CENTER" layoutX="-2.0" layoutY="14.0" prefHeight="30.0" prefWidth="234.0" text="Performance" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <StackPane layoutX="20.0" layoutY="90.0" prefHeight="542.0" prefWidth="234.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <SplitPane orientation="VERTICAL" prefHeight="540.0" prefWidth="160.0">
+                                      <items>
+                                          <VBox>
+                                             <children>
+                                              <AnchorPane fx:id="AI1" minHeight="0.0" minWidth="0.0" prefHeight="108.0">
+                                                   <children>
+                                                      <SplitPane dividerPositions="0.5" prefHeight="108.0" prefWidth="232.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                                         <items>
+                                                            <VBox prefHeight="108.0" prefWidth="160.0">
+                                                               <children>
+                                                                  <Label fx:id="fund1name" layoutY="14.0" prefHeight="36.0" prefWidth="160.0" text="Fund 1 Name" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                                  <Label fx:id="fund1rank" layoutX="31.0" layoutY="37.0" prefHeight="36.0" prefWidth="160.0" text="Fund 1 Rank" />
+                                                                  <Label fx:id="fund1value" layoutX="31.0" layoutY="66.0" prefHeight="36.0" prefWidth="160.0" text="Fund 1 Value" />
+                                                               </children>
+                                                            </VBox>
+                                                            <ImageView fx:id="fund1img" fitHeight="108.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true" />
+                                                         </items>
+                                                      </SplitPane>
+                                                   </children>
+                                                </AnchorPane>
+                                              <AnchorPane fx:id="AI2" minHeight="0.0" minWidth="0.0" prefHeight="108.0">
+                                                   <children>
+                                                      <SplitPane dividerPositions="0.5" prefHeight="108.0" prefWidth="232.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                                         <items>
+                                                            <VBox prefHeight="108.0" prefWidth="160.0">
+                                                               <children>
+                                                                  <Label fx:id="fund2name" layoutY="14.0" prefHeight="36.0" prefWidth="160.0" text="Fund 2 Name" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                                  <Label fx:id="fund2rank" layoutX="31.0" layoutY="37.0" prefHeight="36.0" prefWidth="160.0" text="Fund 2 Rank" />
+                                                                  <Label fx:id="fund2value" layoutX="31.0" layoutY="66.0" prefHeight="36.0" prefWidth="160.0" text="Fund 2 Value" />
+                                                               </children>
+                                                            </VBox>
+                                                            <ImageView fx:id="fund2img" fitHeight="108.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true" />
+                                                         </items>
+                                                      </SplitPane>
+                                                   </children>
+                                                </AnchorPane>
+                                                <AnchorPane fx:id="AI3" layoutX="10.0" layoutY="10.0" minHeight="0.0" minWidth="0.0" prefHeight="108.0">
+                                                   <children>
+                                                      <SplitPane dividerPositions="0.5" prefHeight="108.0" prefWidth="232.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                                         <items>
+                                                            <VBox prefHeight="108.0" prefWidth="160.0">
+                                                               <children>
+                                                                  <Label fx:id="fund3name" layoutY="14.0" prefHeight="36.0" prefWidth="160.0" text="Fund 3 Name" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                                  <Label fx:id="fund3rank" layoutX="31.0" layoutY="37.0" prefHeight="36.0" prefWidth="160.0" text="Fund 3 Rank" />
+                                                                  <Label fx:id="fund3value" layoutX="31.0" layoutY="66.0" prefHeight="36.0" prefWidth="160.0" text="Fund 3 Value" />
+                                                               </children>
+                                                            </VBox>
+                                                            <ImageView fx:id="fund3img" fitHeight="108.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true" />
+                                                         </items>
+                                                      </SplitPane>
+                                                   </children>
+                                                </AnchorPane>
+                                                <AnchorPane fx:id="AI4" layoutX="10.0" layoutY="10.0" minHeight="0.0" minWidth="0.0" prefHeight="108.0">
+                                                   <children>
+                                                      <SplitPane dividerPositions="0.5" prefHeight="108.0" prefWidth="232.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                                         <items>
+                                                            <VBox prefHeight="108.0" prefWidth="160.0">
+                                                               <children>
+                                                                  <Label fx:id="fund4name" layoutY="14.0" prefHeight="36.0" prefWidth="160.0" text="Fund 4 Name" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                                  <Label fx:id="fund4rank" layoutX="31.0" layoutY="37.0" prefHeight="36.0" prefWidth="160.0" text="Fund 4 Rank" />
+                                                                  <Label fx:id="fund4value" layoutX="31.0" layoutY="66.0" prefHeight="36.0" prefWidth="160.0" text="Fund 4 Value" />
+                                                               </children>
+                                                            </VBox>
+                                                            <ImageView fx:id="fund4img" fitHeight="108.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true" />
+                                                         </items>
+                                                      </SplitPane>
+                                                   </children>
+                                                </AnchorPane>
+                                                <AnchorPane fx:id="AI5" layoutX="10.0" layoutY="10.0" minHeight="0.0" minWidth="0.0" prefHeight="108.0">
+                                                   <children>
+                                                      <SplitPane dividerPositions="0.5" prefHeight="108.0" prefWidth="232.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                                         <items>
+                                                            <VBox prefHeight="108.0" prefWidth="160.0">
+                                                               <children>
+                                                                  <Label fx:id="fund5name" layoutY="14.0" prefHeight="36.0" prefWidth="160.0" text="Fund 5 Name" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                                  <Label fx:id="fund5rank" layoutX="31.0" layoutY="37.0" prefHeight="36.0" prefWidth="160.0" text="Fund 5 Rank" />
+                                                                  <Label fx:id="fund5value" layoutX="31.0" layoutY="66.0" prefHeight="36.0" prefWidth="160.0" text="Fund 5 Value" />
+                                                               </children>
+                                                            </VBox>
+                                                            <ImageView fx:id="fund5img" fitHeight="108.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true" />
+                                                         </items>
+                                                      </SplitPane>
+                                                   </children>
+                                                </AnchorPane>
+                                             </children>
+                                          </VBox>
+                                      </items>
+                                    </SplitPane>
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <SplitPane dividerPositions="0.09673366834170855, 0.19974874371859297, 0.30025125628140703, 0.39949748743718594, 0.5, 0.6005025125628141, 0.7010050251256281, 0.5, 0.5" layoutX="298.0" layoutY="117.0" orientation="VERTICAL" prefHeight="798.0" prefWidth="756.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane minHeight="74.0" minWidth="0.0" prefWidth="160.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="30.0" text="Turn:" />
+                              <Label fx:id="turnLabel" layoutX="51.0" layoutY="30.0" text="Turn" />
+                              <Label fx:id="statuslabel" alignment="CENTER" layoutX="134.0" prefHeight="74.0" prefWidth="356.0" text="Status" wrapText="true" AnchorPane.topAnchor="0.0" />
+                              <ImageView fx:id="die1" fitHeight="76.0" fitWidth="76.0" layoutX="522.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="0.0" />
+                              <ImageView fx:id="die2" fitHeight="76.0" fitWidth="76.0" layoutX="600.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="0.0" />
+                              <ImageView fx:id="die3" fitHeight="76.0" fitWidth="76.0" layoutX="678.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="74.0" minWidth="0.0" prefHeight="74.0" prefWidth="160.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="30.0" text="1" />
+                              <Label fx:id="stock1name" layoutX="40.0" layoutY="29.0" prefHeight="17.0" prefWidth="280.0" text="Stock 1 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
+                              <Label layoutX="330.0" layoutY="29.0" text="Price:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock1price" layoutX="365.0" layoutY="29.0" text="\$Price" AnchorPane.topAnchor="29.0" />
+                              <Label layoutX="430.0" layoutY="29.0" text="Volume:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock1volume" layoutX="485.0" layoutY="29.0" text="Volume" AnchorPane.topAnchor="29.0" />
+                              <Label layoutX="555.0" layoutY="29.0" text="High:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock1high" layoutX="590.0" layoutY="29.0" text="\$High" />
+                              <Label layoutX="650.0" layoutY="29.0" text="Low:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock1low" layoutX="680.0" layoutY="29.0" text="\$Low" AnchorPane.topAnchor="29.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="74.0" minWidth="0.0" prefHeight="74.0" prefWidth="160.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="29.0" text="2" />
+                              <Label fx:id="stock2name" layoutX="40.0" layoutY="29.0" prefWidth="280.0" text="Stock 2 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
+                              <Label layoutX="330.0" layoutY="29.0" text="Price:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock2price" layoutX="365.0" layoutY="29.0" text="\$Price" AnchorPane.topAnchor="29.0" />
+                              <Label layoutX="430.0" layoutY="29.0" text="Volume:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock2volume" layoutX="485.0" layoutY="29.0" text="Volume" AnchorPane.topAnchor="29.0" />
+                              <Label layoutX="555.0" layoutY="29.0" text="High:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock2high" layoutX="590.0" layoutY="29.0" text="\$High" AnchorPane.topAnchor="29.0" />
+                              <Label layoutX="650.0" layoutY="29.0" text="Low:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock2low" layoutX="680.0" layoutY="29.0" text="\$Low" AnchorPane.topAnchor="29.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="74.0" minWidth="0.0" prefHeight="74.0" prefWidth="160.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="28.0" text="3" />
+                              <Label fx:id="stock3name" layoutX="40.0" layoutY="28.0" prefWidth="280.0" text="Stock 3 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
+                              <Label layoutX="330.0" layoutY="28.0" text="Price:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock3price" layoutX="365.0" layoutY="28.0" text="\$Price" AnchorPane.topAnchor="29.0" />
+                              <Label layoutX="430.0" layoutY="28.0" text="Volume:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock3volume" layoutX="485.0" layoutY="28.0" text="Volume" AnchorPane.topAnchor="29.0" />
+                              <Label layoutX="555.0" layoutY="29.0" text="High:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock3high" layoutX="590.0" layoutY="29.0" text="\$High" AnchorPane.topAnchor="29.0" />
+                              <Label layoutX="650.0" layoutY="29.0" text="Low:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock3low" layoutX="680.0" layoutY="29.0" text="\$Low" AnchorPane.topAnchor="29.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="74.0" minWidth="0.0" prefHeight="74.0" prefWidth="160.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="29.0" text="4" />
+                              <Label fx:id="stock4name" layoutX="40.0" layoutY="29.0" prefWidth="280.0" text="Stock 4 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
+                              <Label layoutX="330.0" layoutY="29.0" text="Price:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock4price" layoutX="365.0" layoutY="29.0" text="\$Price" AnchorPane.topAnchor="29.0" />
+                              <Label layoutX="430.0" layoutY="28.0" text="Volume:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock4volume" layoutX="485.0" layoutY="28.0" text="Volume" AnchorPane.topAnchor="29.0" />
+                              <Label layoutX="555.0" layoutY="29.0" text="High:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock4high" layoutX="590.0" layoutY="29.0" text="\$High" AnchorPane.topAnchor="29.0" />
+                              <Label layoutX="650.0" layoutY="29.0" text="Low:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock4low" layoutX="680.0" layoutY="29.0" text="\$Low" AnchorPane.topAnchor="29.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="74.0" minWidth="0.0" prefHeight="74.0" prefWidth="160.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="29.0" text="5" />
+                              <Label fx:id="stock5name" layoutX="40.0" layoutY="29.0" prefWidth="280.0" text="Stock 5 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
+                              <Label layoutX="330.0" layoutY="29.0" text="Price:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock5price" layoutX="365.0" layoutY="29.0" text="\$Price" AnchorPane.topAnchor="29.0" />
+                              <Label layoutX="430.0" layoutY="29.0" text="Volume:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock5volume" layoutX="485.0" layoutY="29.0" text="Volume" AnchorPane.topAnchor="29.0" />
+                              <Label layoutX="555.0" layoutY="29.0" text="High:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock5high" layoutX="590.0" layoutY="29.0" text="\$High" AnchorPane.topAnchor="29.0" />
+                              <Label layoutX="650.0" layoutY="29.0" text="Low:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock5low" layoutX="680.0" layoutY="29.0" text="\$Low" AnchorPane.topAnchor="29.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="74.0" minWidth="0.0" prefHeight="74.0" prefWidth="160.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="29.0" text="6" />
+                              <Label fx:id="stock6name" layoutX="40.0" layoutY="29.0" prefWidth="280.0" text="Stock 6 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
+                              <Label layoutX="330.0" layoutY="29.0" text="Price:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock6price" layoutX="365.0" layoutY="29.0" text="\$Price" AnchorPane.topAnchor="29.0" />
+                              <Label layoutX="430.0" layoutY="29.0" text="Volume:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock6volume" layoutX="485.0" layoutY="29.0" text="Volume" AnchorPane.topAnchor="29.0" />
+                              <Label layoutX="555.0" layoutY="29.0" text="High:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock6high" layoutX="590.0" layoutY="29.0" text="\$High" AnchorPane.topAnchor="29.0" />
+                              <Label layoutX="650.0" layoutY="29.0" text="Low:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock6low" layoutX="680.0" layoutY="29.0" text="\$Low" AnchorPane.topAnchor="29.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="74.0" minWidth="0.0" prefHeight="74.0" prefWidth="160.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="29.0" text="7" />
+                              <Label fx:id="stock7name" layoutX="40.0" layoutY="29.0" prefWidth="280.0" text="Stock 7 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
+                              <Label layoutX="330.0" layoutY="29.0" text="Price:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock7price" layoutX="365.0" layoutY="29.0" text="\$Price" AnchorPane.topAnchor="29.0" />
+                              <Label layoutX="430.0" layoutY="28.0" text="Volume:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock7volume" layoutX="485.0" layoutY="28.0" text="Volume" AnchorPane.topAnchor="29.0" />
+                              <Label layoutX="555.0" layoutY="29.0" text="High:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock7high" layoutX="590.0" layoutY="29.0" text="\$High" AnchorPane.topAnchor="29.0" />
+                              <Label layoutX="650.0" layoutY="29.0" text="Low:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock7low" layoutX="680.0" layoutY="29.0" text="\$Low" AnchorPane.topAnchor="29.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="74.0" minWidth="0.0" prefHeight="74.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="29.0" text="8" />
+                              <Label fx:id="stock8name" layoutX="40.0" layoutY="29.0" prefWidth="280.0" text="Stock 8 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
+                              <Label layoutX="330.0" layoutY="29.0" text="Price:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock8price" layoutX="365.0" layoutY="29.0" text="\$Price" AnchorPane.topAnchor="29.0" />
+                              <Label layoutX="430.0" layoutY="28.0" text="Volume:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock8volume" layoutX="485.0" layoutY="29.0" text="Volume" AnchorPane.topAnchor="29.0" />
+                              <Label layoutX="555.0" layoutY="29.0" text="High:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock8high" layoutX="590.0" layoutY="29.0" text="\$High" AnchorPane.topAnchor="29.0" />
+                              <Label layoutX="650.0" layoutY="29.0" text="Low:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock8low" layoutX="680.0" layoutY="29.0" text="\$Low" AnchorPane.topAnchor="29.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="10.0" layoutY="10.0" maxHeight="72.0" minHeight="74.0" minWidth="0.0" prefHeight="74.0" prefWidth="160.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="29.0" text="9" />
+                              <Label fx:id="stock9name" layoutX="40.0" layoutY="29.0" prefWidth="280.0" text="Stock 9 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
+                              <Label layoutX="330.0" layoutY="29.0" text="Price:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock9price" layoutX="365.0" layoutY="29.0" text="\$Price" AnchorPane.topAnchor="29.0" />
+                              <Label layoutX="430.0" layoutY="29.0" text="Volume:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock9volume" layoutX="485.0" layoutY="29.0" text="Volume" AnchorPane.topAnchor="29.0" />
+                              <Label layoutX="555.0" layoutY="29.0" text="High:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock9high" layoutX="590.0" layoutY="29.0" text="\$High" AnchorPane.topAnchor="29.0" />
+                              <Label layoutX="650.0" layoutY="29.0" text="Low:" AnchorPane.topAnchor="29.0" />
+                              <Label fx:id="stock9low" layoutX="680.0" layoutY="29.0" text="\$Low" AnchorPane.topAnchor="29.0" />
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="10.0" layoutY="10.0" maxWidth="192.0" minHeight="0.0" minWidth="192.0" prefHeight="160.0" prefWidth="192.0">
+               <children>
+                  <SplitPane dividerPositions="0.16959798994974876, 0.6180904522613065, 0.8077889447236181" layoutX="17.0" layoutY="165.0" orientation="VERTICAL" prefHeight="798.0" prefWidth="194.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="192.0" prefHeight="296.0" prefWidth="192.0">
+                           <children>
+                              <VBox prefHeight="132.0" prefWidth="192.0" spacing="12.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Label fx:id="playerFund" alignment="CENTER" layoutX="15.0" layoutY="14.0" prefHeight="30.0" prefWidth="192.0" text="Player Fund Name" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <HBox layoutX="14.0" layoutY="49.0" spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                       <children>
+                                          <Label layoutX="14.0" layoutY="49.0" prefWidth="130.0" text="Performance Ranking:">
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label fx:id="playerRank" layoutX="130.0" layoutY="49.0" prefHeight="17.0" prefWidth="39.0" text="Label">
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </HBox>
+                                    <HBox layoutX="14.0" layoutY="74.0" spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                       <children>
+                                          <Label layoutX="14.0" layoutY="74.0" prefWidth="130.0" text="Total Equity:">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label fx:id="playerEquity" layoutX="130.0" layoutY="74.0" text="Label" />
+                                       </children>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </HBox>
+                                    <HBox layoutX="14.0" layoutY="101.0" spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                       <children>
+                                          <Label layoutX="14.0" layoutY="101.0" prefWidth="130.0" text="Cash:">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label fx:id="playerCash" layoutX="130.0" layoutY="101.0" text="Label" />
+                                       </children>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <VBox prefHeight="351.0" prefWidth="192.0" spacing="17.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Label alignment="CENTER" layoutX="82.0" layoutY="14.0" prefHeight="30.0" prefWidth="203.0" text="Stocks" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <HBox layoutX="14.0" layoutY="39.0">
+                                       <children>
+                                          <Label fx:id="playerStock1name" layoutX="14.0" layoutY="39.0" prefWidth="130.0" text="Stock 1">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label fx:id="playerStock1owned" layoutX="121.0" layoutY="39.0" prefWidth="57.0" text="Price 1">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox layoutX="8.0" layoutY="68.0">
+                                       <children>
+                                          <Label fx:id="playerStock2name" layoutX="8.0" layoutY="68.0" prefWidth="130.0" text="Stock 2">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label fx:id="playerStock2owned" layoutX="107.0" layoutY="68.0" prefWidth="57.0" text="Price 2">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox layoutX="14.0" layoutY="96.0">
+                                       <children>
+                                          <Label fx:id="playerStock3name" layoutX="14.0" layoutY="96.0" prefWidth="130.0" text="Stock 3">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label fx:id="playerStock3owned" layoutX="111.0" layoutY="96.0" prefWidth="57.0" text="Price 3">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox layoutX="14.0" layoutY="122.0">
+                                       <children>
+                                          <Label fx:id="playerStock4name" layoutX="14.0" layoutY="122.0" prefWidth="130.0" text="Stock 4">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label fx:id="playerStock4owned" layoutX="111.0" layoutY="122.0" prefWidth="57.0" text="Price 4">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox layoutX="14.0" layoutY="150.0">
+                                       <children>
+                                          <Label fx:id="playerStock5name" layoutX="14.0" layoutY="150.0" prefWidth="130.0" text="Stock 5">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label fx:id="playerStock5owned" layoutX="107.0" layoutY="150.0" prefWidth="57.0" text="Price 5">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox layoutX="18.0" layoutY="176.0">
+                                       <children>
+                                          <Label fx:id="playerStock6name" layoutX="18.0" layoutY="176.0" prefWidth="130.0" text="Stock 6">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label fx:id="playerStock6owned" layoutX="107.0" layoutY="176.0" prefWidth="57.0" text="Price 6">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox layoutX="14.0" layoutY="218.0">
+                                       <children>
+                                          <Label fx:id="playerStock7name" layoutX="14.0" layoutY="218.0" prefWidth="130.0" text="Stock 7">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label fx:id="playerStock7owned" layoutX="107.0" layoutY="218.0" prefWidth="57.0" text="Price 7">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox layoutX="8.0" layoutY="249.0">
+                                       <children>
+                                          <Label fx:id="playerStock8name" layoutX="8.0" layoutY="249.0" prefWidth="130.0" text="Stock 8">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label fx:id="playerStock8owned" layoutX="121.0" layoutY="249.0" prefWidth="57.0" text="Price 8">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox layoutX="8.0" layoutY="282.0">
+                                       <children>
+                                          <Label fx:id="playerStock9name" layoutX="8.0" layoutY="282.0" prefWidth="130.0" text="Stock 9">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label fx:id="playerStock9owned" layoutX="111.0" layoutY="282.0" prefWidth="57.0" text="Price 9">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <VBox prefHeight="145.0" prefWidth="192.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Label alignment="CENTER" layoutX="82.0" layoutY="14.0" prefHeight="30.0" prefWidth="192.0" text="Trading Desk" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <ChoiceBox fx:id="stockPicker" layoutX="21.0" layoutY="30.0" prefHeight="25.0" prefWidth="120.0">
+                                       <VBox.margin>
+                                          <Insets left="36.0" />
+                                       </VBox.margin>
+                                    </ChoiceBox>
+                                    <ChoiceBox fx:id="actionPicker" layoutX="21.0" layoutY="73.0" prefWidth="120.0">
+                                       <VBox.margin>
+                                          <Insets left="36.0" />
+                                       </VBox.margin>
+                                    </ChoiceBox>
+                                    <Button fx:id="executeButton" layoutX="70.0" layoutY="106.0" mnemonicParsing="false" onAction="#executeButtonAction" prefWidth="120.0" text="Execute">
+                                       <VBox.margin>
+                                          <Insets left="36.0" />
+                                       </VBox.margin>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <Button fx:id="goButton" layoutX="36.0" layoutY="14.0" mnemonicParsing="false" onAction="#goButtonAction" prefHeight="79.0" prefWidth="120.0" text="GO">
+                                 <font>
+                                    <Font name="System Bold" size="36.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="quitButton" layoutX="36.0" layoutY="106.0" mnemonicParsing="false" onAction="#quitButtonAction" prefHeight="30.0" prefWidth="120.0" text="Quit" />
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
