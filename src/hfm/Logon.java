@@ -60,7 +60,7 @@ public class Logon {
         }               
     }
     
-    public void writeAccount(){
+    public void writeFund(){
         try{
             FileOutputStream fileOut = new FileOutputStream(FUND);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);          
@@ -69,7 +69,7 @@ public class Logon {
             fileOut.close();
             System.out.println("Serialized arraylist data is saved in FUND");
         }catch(IOException e){
-            System.err.println("writeAccount failed.");
+            System.err.println("writeFund failed.");
             e.printStackTrace();
         }
     }
@@ -81,35 +81,31 @@ public class Logon {
                 return false;
             }
         }
-        funds.add(new Fund(n,p,100,new int[9]));
+        funds.add(new Fund(n,p,1000,new int[9]));
         System.out.println("New funds size: " + funds.size());
-        writeAccount();
+        writeFund();
         return true;
     }
     
-    public void login(String n, String p){
+    public Fund login(String n, String p){
         for(int i = 0;i<funds.size();i++){
             player = (Fund) funds.get(i);
             if(n.equals(player.getName())){
                 if(p.equals(player.getPassword())){
-                    System.out.println("Welcome " + player.getName() + "!");
-                    HFMController.NAME = player.getName();
-                    HFMController.CASH = player.getCash();
-                    HFMController.STOCKS = player.getStocks();
-                    HFMController.acc = true;
-                    return;
+                    return player;
                 }
                 System.out.println("New Login: Pass does not match");
             }
-        }              
+        } 
+        return null;
     }
     
     public void updateBank(){
         for(int i = 0;i<funds.size();i++){
             player = (Fund) funds.get(i);
-            if(HFMController.NAME.equals(player.getName())){
-                player.setCash(HFMController.CASH);
-                player.setStocks(HFMController.STOCKS);
+            if(HFMController.pNAME.equals(player.getName())){
+                player.setCash(HFMController.pCASH);
+                player.setStocks(HFMController.pSTOCKS);
             }
         }
     }

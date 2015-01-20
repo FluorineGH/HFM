@@ -1,16 +1,21 @@
 package hfm;
 
+import java.math.BigDecimal;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 
-public class HFMController {
+public class HFMController implements Initializable{
 
     @FXML private TableView<?> stats;
     
@@ -30,7 +35,7 @@ public class HFMController {
     @FXML private ImageView die3;
     
     @FXML private Label turnLabel;
-    @FXML private Label statuslabel;
+    @FXML private Label statusLabel;
       
     @FXML private Label fund1name;
     @FXML private Label fund1rank;
@@ -127,33 +132,237 @@ public class HFMController {
     @FXML private Button quitButton;
     
     // Logon Info
-    static String NAME;
-    static int CASH;
-    static int[] STOCKS;
+    static String pNAME;
+    static int pCASH;
+    static int[] pSTOCKS;
     static boolean acc;
     Logon log;
     Fund player;
-    @FXML private AnchorPane gamePane;
-    @FXML private Pane splashPane;
+   
+    // AI Directives
+    ArrayList<FundAI> AIs;
+    BigDecimal[] fVALUE;
+    
+    
+    // Initialization
+    static int TURN, pEQUITY;
+    static int[] STOCKVOL, RANKS;
+    private int nameNum = 14;
+    public static ArrayList<Stock> STOCKS; //stock1, stock2, stock3, stock4, stock5, stock6, stock7, stock8, stock9;
+    public ArrayList<Label> SNL, SPL, SVL, SHL, SLL, PSN, PSO, FN, FR, FV;
+    private String[] fundNames;
+    private String[] stockNames;
+    private String[] FNAME1 = {"Black","Red","Golden","Silver","First","Premier","Apex","Provincial","Countrywide","Global",
+                              "Aspirational","Crystal","National","Interdimensional","Universal"};
+    private String[] FNAME2 = {"Squid","Rock","Tree","Horizon","Investors","Capital","Moneybags","Snatchem","Lupine","Porkbelly",
+                              "Wealth","Accretion","Delta","Omega","Alpha Seeking"};
+    private String[] FNAME3 = {"Trust","Partners","Associates","Holdings","Group","Capital","Securities","Markets","Incorporated","Funds",
+                              "Fund","Capital Group","Management","Equity Holdings","Advisors"};
+    
+    private String[] SNAME1 = {"Platypus","Viceroy","Tachyon","Pestilence","Bugbear","Clearcut","Windy Field","The Happy Pinecone","FDMR","Birdhouses",
+                              "The Golden Snakeskin","Onyx","Presidio","Ubiquitous","Pyramid"};
+    private String[] SNAME2 = {"INC","Corporation","LTD","GmbH","Limited","Company","Incorporated","LLC","Zaibatsu","Chaebol",
+                              "Conglamorate","Corp.","Systems","Solutions","S.A."};
     
     public HFMController(){
-        log = new Logon();
+        TURN = 0;
+        this.player = HFM.player;
+        pNAME = player.getName();
+        pCASH = player.getCash();
+        pSTOCKS = player.getStocks();
+        STOCKS = new ArrayList<>();
+        AIs = new ArrayList<>();
+        SNL = new ArrayList<>();
+        SPL = new ArrayList<>();
+        SVL = new ArrayList<>();
+        SHL = new ArrayList<>();
+        SLL = new ArrayList<>();
+        PSN = new ArrayList<>();
+        PSO = new ArrayList<>();
+        FN = new ArrayList<>();
+        FR = new ArrayList<>();
+        FV = new ArrayList<>();
+        fundNames = new String[5];
+        stockNames = new String[9];
+        STOCKVOL = new int[9];
+        fVALUE = new BigDecimal[5];
+        initAIs();
+        initStocks();
+        volumeControl();        
+    }
+    
+    private void initAIs(){
+        String n = "";
+        Random r = new Random();
+        int c = 0;       
+        while(c < 5){
+            n += FNAME1[r.nextInt(nameNum)] + " " + FNAME2[r.nextInt(nameNum)] + " " + FNAME3[r.nextInt(nameNum)];
+            for(int i = 0;i<5;i++){
+                if(n.equals(fundNames[i])) continue;
+            }
+            fundNames[c] = n;
+            c++;
+            n = "";
+        }        
+        for(int i = 0;i<5;i++){
+            AIs.add(new FundAI(fundNames[i]));
+            System.out.println("AI Added: " + fundNames[i]);
+        }
+    }
+    
+    private void initStocks(){        
+        String n = "";
+        Random r = new Random();
+        int c = 0;
+        while(c < 9){
+            n += SNAME1[r.nextInt(nameNum)] + " " + SNAME2[r.nextInt(nameNum)];
+                for(int i = 0;i<5;i++){
+                if(n.equals(stockNames[i])) continue;
+            }
+            stockNames[c] = n;
+            c++;
+            n = "";
+        }    
+        for(int i = 0;i<9;i++){
+            STOCKS.add(new Stock(stockNames[i]));
+            System.out.println("Stock Added: " + stockNames[i]);
+        }
+    }
+    
+    private void initArrays(){
+        SNL.add(stock1name);       
+        SNL.add(stock2name);
+        SNL.add(stock3name);
+        SNL.add(stock4name);
+        SNL.add(stock5name);
+        SNL.add(stock6name);
+        SNL.add(stock7name);
+        SNL.add(stock8name);
+        SNL.add(stock9name);
+       
+        SPL.add(stock1price);       
+        SPL.add(stock2price);
+        SPL.add(stock3price);
+        SPL.add(stock4price);
+        SPL.add(stock5price);
+        SPL.add(stock6price);
+        SPL.add(stock7price);
+        SPL.add(stock8price);
+        SPL.add(stock9price);
         
+        SVL.add(stock1volume);       
+        SVL.add(stock2volume);
+        SVL.add(stock3volume);
+        SVL.add(stock4volume);
+        SVL.add(stock5volume);
+        SVL.add(stock6volume);
+        SVL.add(stock7volume);
+        SVL.add(stock8volume);
+        SVL.add(stock9volume);
+        
+        SHL.add(stock1high);       
+        SHL.add(stock2high);
+        SHL.add(stock3high);
+        SHL.add(stock4high);
+        SHL.add(stock5high);
+        SHL.add(stock6high);
+        SHL.add(stock7high);
+        SHL.add(stock8high);
+        SHL.add(stock9high);
+        
+        SLL.add(stock1low);       
+        SLL.add(stock2low);
+        SLL.add(stock3low);
+        SLL.add(stock4low);
+        SLL.add(stock5low);
+        SLL.add(stock6low);
+        SLL.add(stock7low);
+        SLL.add(stock8low);
+        SLL.add(stock9low);
+       
+        PSN.add(playerStock1name);       
+        PSN.add(playerStock2name);
+        PSN.add(playerStock3name);
+        PSN.add(playerStock4name);
+        PSN.add(playerStock5name);
+        PSN.add(playerStock6name);
+        PSN.add(playerStock7name);
+        PSN.add(playerStock8name);
+        PSN.add(playerStock9name);
+        
+        PSO.add(playerStock1owned);       
+        PSO.add(playerStock2owned);
+        PSO.add(playerStock3owned);
+        PSO.add(playerStock4owned);
+        PSO.add(playerStock5owned);
+        PSO.add(playerStock6owned);
+        PSO.add(playerStock7owned);
+        PSO.add(playerStock8owned);
+        PSO.add(playerStock9owned);
+        
+        FN.add(fund1name);       
+        FN.add(fund2name);
+        FN.add(fund3name);
+        FN.add(fund4name);
+        FN.add(fund5name);
+        
+        FR.add(fund1rank); 
+        FR.add(fund2rank);
+        FR.add(fund3rank);
+        FR.add(fund4rank);
+        FR.add(fund5rank);
+        
+        FV.add(fund1value); 
+        FV.add(fund2value);
+        FV.add(fund3value);
+        FV.add(fund4value);
+        FV.add(fund5value);
+    }    
+    
+    private void setLabels(){
+        turnLabel.setText(Integer.toString(TURN));
+        statusLabel.setText("Welcome to Hedge Fund Manager, " + player.getName());
+        for(int i = 0;i < 9; i++){
+            BigDecimal bd = BigDecimal.ZERO;
+            Label snl = (Label) SNL.get(i);
+            Label spl = (Label) SPL.get(i);
+            Label svl = (Label) SVL.get(i);
+            Label shl = (Label) SHL.get(i);
+            Label sll = (Label) SLL.get(i);
+            Label psn = (Label) PSN.get(i);
+            Label pso = (Label) PSO.get(i);            
+            Stock s = (Stock) STOCKS.get(i);            
+            snl.setText(s.getStockName());
+            bd = s.getStockValue();
+            //String str = bd.toString();
+            spl.setText(bd.toString());
+            bd = s.getStockHigh();
+            String str = bd.toString();
+            shl.setText(str);
+            bd = s.getStockLow();
+            str = bd.toString();
+            sll.setText(str);
+            svl.setText(Integer.toString(STOCKVOL[i])); 
+            psn.setText(s.getStockName());
+            pso.setText(Integer.toString(pSTOCKS[i]));           
+        }
+        for(int i = 0;i<5;i++){
+            Label fn = (Label) FN.get(i);
+            Label fr = (Label) FR.get(i);
+            Label fv = (Label) FV.get(i);
+            FundAI fai = (FundAI) AIs.get(i);
+            fn.setText(fai.getFundName());
+            fr.setText(Integer.toString(999));
+            fv.setText(fVALUE[i].toString());
+        }
+        playerFund.setText(pNAME + " Hedge Fund");
+        playerRank.setText("AWESOME");
+        playerEquity.setText(Integer.toString(pEQUITY));
+        playerCash.setText(Integer.toString(pCASH));
     }
     
     private void loadImg(){
        // ONE     = new Image(FXMLCrapsController.class.getResourceAsStream("1.png"));
-    }
-    
-    @FXML void loginButtonAction(ActionEvent event) {        
-/*        splashPane.setDisable(true);
-        catsButton.setDisable(true);
-        splashPane.setVisible(false);
-        catsButton.setVisible(false);
-        gamePane.setVisible(true);
-        gamePane.setPrefSize(1200, 800);
-*/       
-        
     }
     
     @FXML void executeButtonAction(ActionEvent event) {
@@ -168,4 +377,27 @@ public class HFMController {
 
     }
 
+    private void volumeControl(){
+        pEQUITY = 0;
+        for(int i = 0;i < 9;i++){
+            STOCKVOL[i] = 0;
+            STOCKVOL[i] += pSTOCKS[i];           
+            pEQUITY += pSTOCKS[i];
+        }
+        
+        for(int f = 0;f < 5;f++){
+            FundAI fai = (FundAI) AIs.get(0);
+            int[] a1 = fai.getFundStocks();
+            fVALUE[f] = fai.getValue();
+            for(int i = 0;i < 9;i++){
+                STOCKVOL[i] += a1[i];                
+            }
+        }
+    }
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        initArrays();
+        setLabels();
+    }
 }

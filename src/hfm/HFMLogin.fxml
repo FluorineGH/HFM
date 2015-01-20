@@ -5,8 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hfm.HFMLoginController">
    <children>
       <Label alignment="CENTER" layoutX="7.0" layoutY="10.0" prefHeight="61.0" prefWidth="380.0" text="Hedge Fund Manager" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <font>
@@ -35,9 +34,14 @@
                   <PasswordField fx:id="passField" layoutX="174.0" layoutY="138.0" promptText="Enter Password" />
                </children>
             </HBox>
-            <Button fx:id="loginButton" alignment="CENTER" layoutX="174.0" layoutY="176.0" mnemonicParsing="false" onAction="#loginButtonAction" prefWidth="100.0" text="Login" />
+            <Button fx:id="loginButton" alignment="CENTER" defaultButton="true" layoutX="174.0" layoutY="176.0" mnemonicParsing="false" onAction="#loginButtonAction" prefWidth="100.0" text="Login" />
             <Button fx:id="newButton" alignment="CENTER" layoutX="174.0" layoutY="215.0" mnemonicParsing="false" onAction="#newButtonAction" prefWidth="100.0" text="New Account" />
          </children>
       </VBox>
+      <Label fx:id="warningLabel" alignment="CENTER" layoutX="33.0" layoutY="261.0" prefHeight="17.0" prefWidth="340.0" textFill="RED" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

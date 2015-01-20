@@ -19,15 +19,17 @@ import javafx.stage.Stage;
 public class HFM extends Application {
     
     public static String VERSION = "Version ~ 0.1";
+    public static Fund player;
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("HFM.fxml"));
-        
-        Scene scene = new Scene(root,1200,800);
+        Parent root = FXMLLoader.load(getClass().getResource("HFMLogin.fxml"));
+       
+        Scene scene = new Scene(root,400,300);
         stage.setTitle("Hedge Fund Manager ~ " + VERSION);
         stage.setScene(scene);
         stage.show();
+        
     }
 
     /**

@@ -41,18 +41,18 @@ public class Fund implements java.io.Serializable{
     }
     
     public String getName(){
-      return Name;
+        return Name;
     }
 
     public String getPassword(){
-      return Password;
+        return Password;
     }
     
     public int getCash(){
-      return Cash;
+        return Cash;
     }
     
     public void setCash(int i){
-      Cash = i;
+        Cash = i;
     }   
 }
