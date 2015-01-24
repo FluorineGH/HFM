@@ -147,7 +147,7 @@ public class HFMController implements Initializable{
     // Initialization
     static int TURN, pEQUITY;
     static int[] STOCKVOL, RANKS;
-    private int nameNum = 14;
+    private final int nameNum = 14;
     public static ArrayList<Stock> STOCKS; //stock1, stock2, stock3, stock4, stock5, stock6, stock7, stock8, stock9;
     public ArrayList<Label> SNL, SPL, SVL, SHL, SLL, PSN, PSO, FN, FR, FV;
     private String[] fundNames;
@@ -166,11 +166,12 @@ public class HFMController implements Initializable{
     
     public HFMController(){
         TURN = 0;
-        this.player = HFM.player;
+        this.player = HFM.player;       
         pNAME = player.getName();
         pCASH = player.getCash();
         pSTOCKS = player.getStocks();
         STOCKS = new ArrayList<>();
+        log = new Logon();
         AIs = new ArrayList<>();
         SNL = new ArrayList<>();
         SPL = new ArrayList<>();
@@ -210,23 +211,26 @@ public class HFMController implements Initializable{
         }
     }
     
-    private void initStocks(){        
-        String n = "";
-        Random r = new Random();
-        int c = 0;
-        while(c < 9){
-            n += SNAME1[r.nextInt(nameNum)] + " " + SNAME2[r.nextInt(nameNum)];
-                for(int i = 0;i<5;i++){
-                if(n.equals(stockNames[i])) continue;
+    private void initStocks(){
+        log.readStocks();
+        if(STOCKS.isEmpty()){
+            String n = "";
+            Random r = new Random();
+            int c = 0;
+            while(c < 9){
+                n += SNAME1[r.nextInt(nameNum)] + " " + SNAME2[r.nextInt(nameNum)];
+                    for(int i = 0;i<5;i++){
+                    if(n.equals(stockNames[i])) continue;
+                }
+                stockNames[c] = n;
+                c++;
+                n = "";
             }
-            stockNames[c] = n;
-            c++;
-            n = "";
-        }    
-        for(int i = 0;i<9;i++){
-            STOCKS.add(new Stock(stockNames[i]));
-            System.out.println("Stock Added: " + stockNames[i]);
-        }
+            for(int i = 0;i<9;i++){
+                STOCKS.add(new Stock(stockNames[i]));
+                System.out.println("Stock Added: " + stockNames[i]);
+            }
+        } else System.out.println("Loading stocks from STOCKname.file");                    
     }
     
     private void initArrays(){
@@ -373,8 +377,12 @@ public class HFMController implements Initializable{
 
     }
 
-    @FXML void quitButtonAction(ActionEvent event) {
-
+    @FXML void quitButtonAction(ActionEvent event) {                    
+        log.updateBank();
+        log.writeFund();
+        log.writeStocks(STOCKS);
+        System.out.println("New bank record: " + pCASH);
+        System.exit(0);
     }
 
     private void volumeControl(){

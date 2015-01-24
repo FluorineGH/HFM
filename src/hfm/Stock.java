@@ -7,10 +7,9 @@
 package hfm;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.math.RoundingMode;
 
-public class Stock {
+public class Stock implements java.io.Serializable {
     
     private final String stockName;
     private BigDecimal stockValue;

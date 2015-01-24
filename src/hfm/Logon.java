@@ -12,18 +12,24 @@ import java.util.ArrayList;
 public class Logon {
     
     ArrayList<Fund> funds;
-    File dirCheck, FUND;
+    ArrayList<Stock> stocks;
+    File dirCheck, FUND, STOCKS;
     Fund player;
+    Boolean dirTrue;
     
     public Logon(){
         funds = new ArrayList<>();
-        scoreCheck();
+        stocks = new ArrayList<>();
+        infoCheck();
         readFund();
+        //readStocks();
+        dirTrue = false;
     }    
     
-    public void scoreCheck(){    
+    public void infoCheck(){    
         dirCheck = new File("K:\\Table Games\\Chipper\\java");
         if(dirCheck.exists()) FUND = new File("K:\\Table Games\\Chipper\\java","FUND");
+        if(dirCheck.exists()) dirTrue = true;
         else {
             System.out.println("DIRECTORY DOES NOT EXIST! Using current DIR.");
             FUND = new File(System.getProperty("user.dir"),"FUND");
@@ -39,8 +45,7 @@ public class Logon {
             in.close();
             fileIn.close();
         }catch(IOException e){
-            System.err.println("readAccount IO Error: File not found.");
-            //e.printStackTrace();
+            System.err.println("readAccount IO Error: File FUNDS not found.");
             return;
         }catch(ClassNotFoundException cnf){
             cnf.printStackTrace();
@@ -57,7 +62,7 @@ public class Logon {
             for(int j = 0;j<9;j++){
                 System.out.println("Stock " + j + ": " + ii[j]);
             }
-        }               
+        }        
     }
     
     public void writeFund(){
@@ -74,6 +79,63 @@ public class Logon {
         }
     }
     
+    public void readStocks(){
+        infoCheck();
+        String saveStocks = "STOCKS" + player.getName();
+        File saveFile;
+        if(dirTrue == true){
+            saveFile = new File("K:\\Table Games\\Chipper\\java",saveStocks);
+        } else saveFile = new File(saveStocks);
+        if(!saveFile.exists()){
+             System.err.println("readStocks: File " + saveStocks + " not found.");
+            return;
+        }
+        try{
+            FileInputStream fileIn = new FileInputStream(saveFile);
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            stocks = (ArrayList) in.readObject();
+            in.close();
+            fileIn.close();
+        }catch(IOException e){
+            System.err.println("readAccount IO Error: File " + saveStocks + " not found.");
+            return;
+        }catch(ClassNotFoundException cnf){
+            cnf.printStackTrace();
+            System.err.println("Class Not Found Error: not sure what this is...");
+            return;
+        }
+        for(int i = 0;i<stocks.size();i++){
+            Stock s = (Stock) stocks.get(i);
+            System.out.println("readStock list: " + i);
+            System.out.println("Stock Name: " + s.getStockName());
+            System.out.println("Stock Price: " + s.getStockValue());
+            System.out.println("Stock High: " + s.getStockHigh());
+            System.out.println("Stock Low: " + s.getStockLow());                       
+        }
+        HFMController.STOCKS = stocks;
+    }
+    
+    public void writeStocks(ArrayList a){
+        infoCheck();
+        stocks = a;
+        String listName = "STOCKS" + player.getName();
+        File fileName = new File(listName);
+        if(dirTrue == true){
+            fileName = new File("K:\\Table Games\\Chipper\\java",listName);
+        } else fileName = new File(listName);         
+        try{
+            FileOutputStream fileOut = new FileOutputStream(fileName);
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);          
+            out.writeObject(stocks);
+            out.close();
+            fileOut.close();
+            System.out.println("Serialized arraylist data is saved in " + listName);
+        }catch(IOException e){
+            System.err.println("writeStocks failed.");
+            e.printStackTrace();
+        }
+    }
+    
     public boolean newFund(String n, String p){
         for(int i = 0;i<funds.size();i++){
             player = (Fund)funds.get(i);
@@ -82,7 +144,6 @@ public class Logon {
             }
         }
         funds.add(new Fund(n,p,1000,new int[9]));
-        System.out.println("New funds size: " + funds.size());
         writeFund();
         return true;
     }

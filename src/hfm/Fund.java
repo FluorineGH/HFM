@@ -12,8 +12,8 @@ package hfm;
  */
 public class Fund implements java.io.Serializable{
     
-    private String Name;
-    private String Password;
+    private final String Name;
+    private final String Password;
     private int Cash;
     private int[] stocks;   
     

@@ -1,8 +1,11 @@
 
 package hfm;
 
+import static hfm.HFMController.STOCKS;
+import static hfm.HFMController.pCASH;
 import java.io.IOException;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -13,6 +16,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class HFMLoginController {
 
@@ -54,6 +58,19 @@ public class HFMLoginController {
                 stage2.setTitle("Hedge Fund Manager ~ " + HFM.VERSION);
                 stage2.setScene(scene2);
                 stage2.show();
+                
+                // Make sure the X box on the window saves Fund and Stock Info
+                scene2.getWindow().setOnCloseRequest(new EventHandler<WindowEvent>() {
+                    public void handle(WindowEvent ev) {
+                        System.out.println("External Close triggered!");
+                        Logon log = new Logon();
+                        log.updateBank();
+                        log.writeFund();
+                        log.writeStocks(STOCKS);
+                        System.out.println("New External Close bank record: " + pCASH);
+                        System.exit(0);
+                    }
+                });
                 
                 ((Node)(event.getSource())).getScene().getWindow().hide();                
             } catch (IOException e) {
