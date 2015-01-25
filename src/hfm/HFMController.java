@@ -5,6 +5,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -123,8 +125,9 @@ public class HFMController implements Initializable{
     @FXML private Label playerStock9name;
     @FXML private Label playerStock9owned;
  
-    @FXML private ChoiceBox<?> stockPicker;
-    @FXML private ChoiceBox<?> actionPicker;
+    @FXML private ChoiceBox<String> stockPicker;
+    @FXML private ChoiceBox<String> actionPicker;
+    ObservableList<String> choseStock;
     
     @FXML private Button catsButton;
     @FXML private Button executeButton;
@@ -151,7 +154,7 @@ public class HFMController implements Initializable{
     public static ArrayList<Stock> STOCKS; //stock1, stock2, stock3, stock4, stock5, stock6, stock7, stock8, stock9;
     public ArrayList<Label> SNL, SPL, SVL, SHL, SLL, PSN, PSO, FN, FR, FV;
     private String[] fundNames;
-    private String[] stockNames;
+    static String[] stockNames;
     private String[] FNAME1 = {"Black","Red","Golden","Silver","First","Premier","Apex","Provincial","Countrywide","Global",
                               "Aspirational","Crystal","National","Interdimensional","Universal"};
     private String[] FNAME2 = {"Squid","Rock","Tree","Horizon","Investors","Capital","Moneybags","Snatchem","Lupine","Porkbelly",
@@ -183,6 +186,7 @@ public class HFMController implements Initializable{
         FN = new ArrayList<>();
         FR = new ArrayList<>();
         FV = new ArrayList<>();
+        
         fundNames = new String[5];
         stockNames = new String[9];
         STOCKVOL = new int[9];
@@ -370,11 +374,11 @@ public class HFMController implements Initializable{
     }
     
     @FXML void executeButtonAction(ActionEvent event) {
-
+        
     }
 
     @FXML void goButtonAction(ActionEvent event) {
-
+        
     }
 
     @FXML void quitButtonAction(ActionEvent event) {                    
@@ -407,5 +411,8 @@ public class HFMController implements Initializable{
     public void initialize(URL url, ResourceBundle rb) {
         initArrays();
         setLabels();
+        choseStock = FXCollections.observableArrayList(stockNames);
+        stockPicker.getItems().addAll(stockNames);
+        actionPicker.setItems(FXCollections.observableArrayList("Buy", "Sell"));        
     }
 }

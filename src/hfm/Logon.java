@@ -45,7 +45,7 @@ public class Logon {
             in.close();
             fileIn.close();
         }catch(IOException e){
-            System.err.println("readAccount IO Error: File FUNDS not found.");
+            System.err.println("readFund IO Error: File FUND not found.");
             return;
         }catch(ClassNotFoundException cnf){
             cnf.printStackTrace();
@@ -97,7 +97,7 @@ public class Logon {
             in.close();
             fileIn.close();
         }catch(IOException e){
-            System.err.println("readAccount IO Error: File " + saveStocks + " not found.");
+            System.err.println("readStocks IO Error: File " + saveStocks + " not found.");
             return;
         }catch(ClassNotFoundException cnf){
             cnf.printStackTrace();
@@ -110,7 +110,8 @@ public class Logon {
             System.out.println("Stock Name: " + s.getStockName());
             System.out.println("Stock Price: " + s.getStockValue());
             System.out.println("Stock High: " + s.getStockHigh());
-            System.out.println("Stock Low: " + s.getStockLow());                       
+            System.out.println("Stock Low: " + s.getStockLow());
+            HFMController.stockNames[i] = s.getStockName();
         }
         HFMController.STOCKS = stocks;
     }

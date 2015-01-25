@@ -7,11 +7,11 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="gamePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hfm.HFMController">
+<AnchorPane fx:id="gamePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hfm.HFMController">
    <children>
-      <SplitPane dividerPositions="0.21118530884808012, 0.837228714524207" layoutX="153.0" layoutY="224.0" prefHeight="800.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.5, 1.0" layoutX="153.0" layoutY="224.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
-          <AnchorPane maxWidth="260.0" minWidth="260.0" prefWidth="260.0">
+          <AnchorPane>
                <children>
                   <SplitPane dividerPositions="0.31532663316582915" layoutX="68.0" layoutY="272.0" orientation="VERTICAL" prefHeight="798.0" prefWidth="240.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <items>
@@ -127,11 +127,11 @@
                   </SplitPane>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <AnchorPane>
                <children>
-                  <SplitPane dividerPositions="0.09673366834170855, 0.19974874371859297, 0.30025125628140703, 0.39949748743718594, 0.5, 0.6005025125628141, 0.7010050251256281, 0.5, 0.5" layoutX="298.0" layoutY="117.0" orientation="VERTICAL" prefHeight="798.0" prefWidth="756.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <SplitPane dividerPositions="0.09673366834170855, 0.19974874371859297, 0.30025125628140703, 0.39949748743718594, 0.5, 0.6005025125628141, 0.7010050251256281, 0.5, 0.5" layoutX="298.0" layoutY="117.0" orientation="VERTICAL" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <items>
-                      <AnchorPane minHeight="74.0" minWidth="0.0" prefWidth="160.0">
+                      <AnchorPane>
                            <children>
                               <Label layoutX="14.0" layoutY="30.0" text="Turn:" />
                               <Label fx:id="turnLabel" layoutX="51.0" layoutY="30.0" text="Turn" />
@@ -141,139 +141,202 @@
                               <ImageView fx:id="die3" fitHeight="76.0" fitWidth="76.0" layoutX="678.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="0.0" />
                            </children>
                         </AnchorPane>
-                      <AnchorPane minHeight="74.0" minWidth="0.0" prefHeight="74.0" prefWidth="160.0">
+                      <AnchorPane minHeight="-Infinity" prefHeight="74.0">
                            <children>
-                              <Label layoutX="14.0" layoutY="30.0" text="1" />
-                              <Label fx:id="stock1name" layoutX="40.0" layoutY="29.0" prefHeight="0.0" prefWidth="255.0" text="Stock 1 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
-                              <Label layoutX="300.0" layoutY="29.0" text="Price:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock1price" layoutX="335.0" layoutY="29.0" text="\$Price" AnchorPane.topAnchor="29.0" />
-                              <Label layoutX="400.0" layoutY="29.0" text="Volume:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock1volume" layoutX="455.0" layoutY="29.0" text="Volume" AnchorPane.topAnchor="29.0" />
-                              <Label layoutX="525.0" layoutY="29.0" text="High:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock1high" layoutX="560.0" layoutY="29.0" text="\$High" />
-                              <Label layoutX="620.0" layoutY="29.0" text="Low:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock1low" layoutX="650.0" layoutY="29.0" text="\$Low" AnchorPane.topAnchor="29.0" />
+                              <HBox layoutX="14.0" layoutY="29.0" spacing="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="30.0" text="1" />
+                                    <Label fx:id="stock1name" layoutX="40.0" layoutY="29.0" prefHeight="0.0" prefWidth="255.0" text="Stock 1 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
+                                    <Label layoutX="300.0" layoutY="29.0" text="Price:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock1price" layoutX="335.0" layoutY="29.0" text="\$Price" AnchorPane.topAnchor="29.0" />
+                                    <Label layoutX="400.0" layoutY="29.0" text="Volume:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock1volume" layoutX="455.0" layoutY="29.0" text="Volume" AnchorPane.topAnchor="29.0" />
+                                    <Label layoutX="525.0" layoutY="29.0" text="High:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock1high" layoutX="560.0" layoutY="29.0" text="\$High" />
+                                    <Label layoutX="620.0" layoutY="29.0" text="Low:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock1low" layoutX="650.0" layoutY="29.0" text="\$Low" AnchorPane.topAnchor="29.0" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </HBox>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="74.0" minWidth="0.0" prefHeight="74.0" prefWidth="160.0">
+                        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="74.0" prefWidth="160.0">
                            <children>
-                              <Label layoutX="14.0" layoutY="29.0" text="2" />
-                              <Label fx:id="stock2name" layoutX="40.0" layoutY="29.0" prefHeight="0.0" prefWidth="255.0" text="Stock 2 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
-                              <Label layoutX="300.0" layoutY="29.0" text="Price:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock2price" layoutX="335.0" layoutY="29.0" text="\$Price" AnchorPane.topAnchor="29.0" />
-                              <Label layoutX="400.0" layoutY="29.0" text="Volume:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock2volume" layoutX="455.0" layoutY="29.0" text="Volume" AnchorPane.topAnchor="29.0" />
-                              <Label layoutX="525.0" layoutY="29.0" text="High:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock2high" layoutX="560.0" layoutY="29.0" text="\$High" AnchorPane.topAnchor="29.0" />
-                              <Label layoutX="620.0" layoutY="29.0" text="Low:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock2low" layoutX="650.0" layoutY="29.0" text="\$Low" AnchorPane.topAnchor="29.0" />
+                              <HBox layoutX="14.0" layoutY="29.0" spacing="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="29.0" text="2" />
+                                    <Label fx:id="stock2name" layoutX="40.0" layoutY="29.0" prefHeight="0.0" prefWidth="255.0" text="Stock 2 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
+                                    <Label layoutX="300.0" layoutY="29.0" text="Price:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock2price" layoutX="335.0" layoutY="29.0" text="\$Price" AnchorPane.topAnchor="29.0" />
+                                    <Label layoutX="400.0" layoutY="29.0" text="Volume:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock2volume" layoutX="455.0" layoutY="29.0" text="Volume" AnchorPane.topAnchor="29.0" />
+                                    <Label layoutX="525.0" layoutY="29.0" text="High:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock2high" layoutX="560.0" layoutY="29.0" text="\$High" AnchorPane.topAnchor="29.0" />
+                                    <Label layoutX="620.0" layoutY="29.0" text="Low:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock2low" layoutX="650.0" layoutY="29.0" text="\$Low" AnchorPane.topAnchor="29.0" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </HBox>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="74.0" minWidth="0.0" prefHeight="74.0" prefWidth="160.0">
+                        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="74.0" prefWidth="160.0">
                            <children>
-                              <Label layoutX="14.0" layoutY="28.0" text="3" />
-                              <Label fx:id="stock3name" layoutX="40.0" layoutY="28.0" prefHeight="0.0" prefWidth="255.0" text="Stock 3 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
-                              <Label layoutX="300.0" layoutY="28.0" text="Price:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock3price" layoutX="335.0" layoutY="28.0" text="\$Price" AnchorPane.topAnchor="29.0" />
-                              <Label layoutX="400.0" layoutY="28.0" text="Volume:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock3volume" layoutX="455.0" layoutY="28.0" text="Volume" AnchorPane.topAnchor="29.0" />
-                              <Label layoutX="525.0" layoutY="29.0" text="High:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock3high" layoutX="560.0" layoutY="29.0" text="\$High" AnchorPane.topAnchor="29.0" />
-                              <Label layoutX="620.0" layoutY="29.0" text="Low:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock3low" layoutX="650.0" layoutY="29.0" text="\$Low" AnchorPane.topAnchor="29.0" />
+                              <HBox layoutX="14.0" layoutY="28.0" spacing="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="28.0" text="3" />
+                                    <Label fx:id="stock3name" layoutX="40.0" layoutY="28.0" prefHeight="0.0" prefWidth="255.0" text="Stock 3 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
+                                    <Label layoutX="300.0" layoutY="28.0" text="Price:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock3price" layoutX="335.0" layoutY="28.0" text="\$Price" AnchorPane.topAnchor="29.0" />
+                                    <Label layoutX="400.0" layoutY="28.0" text="Volume:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock3volume" layoutX="455.0" layoutY="28.0" text="Volume" AnchorPane.topAnchor="29.0" />
+                                    <Label layoutX="525.0" layoutY="29.0" text="High:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock3high" layoutX="560.0" layoutY="29.0" text="\$High" AnchorPane.topAnchor="29.0" />
+                                    <Label layoutX="620.0" layoutY="29.0" text="Low:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock3low" layoutX="650.0" layoutY="29.0" text="\$Low" AnchorPane.topAnchor="29.0" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </HBox>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="74.0" minWidth="0.0" prefHeight="74.0" prefWidth="160.0">
+                        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="74.0" prefWidth="160.0">
                            <children>
-                              <Label layoutX="14.0" layoutY="29.0" text="4" />
-                              <Label fx:id="stock4name" layoutX="40.0" layoutY="29.0" prefHeight="0.0" prefWidth="255.0" text="Stock 4 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
-                              <Label layoutX="300.0" layoutY="29.0" text="Price:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock4price" layoutX="335.0" layoutY="29.0" text="\$Price" AnchorPane.topAnchor="29.0" />
-                              <Label layoutX="400.0" layoutY="28.0" text="Volume:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock4volume" layoutX="455.0" layoutY="28.0" text="Volume" AnchorPane.topAnchor="29.0" />
-                              <Label layoutX="525.0" layoutY="29.0" text="High:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock4high" layoutX="560.0" layoutY="29.0" text="\$High" AnchorPane.topAnchor="29.0" />
-                              <Label layoutX="620.0" layoutY="29.0" text="Low:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock4low" layoutX="650.0" layoutY="29.0" text="\$Low" AnchorPane.topAnchor="29.0" />
+                              <HBox layoutX="14.0" layoutY="29.0" spacing="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="29.0" text="4" />
+                                    <Label fx:id="stock4name" layoutX="40.0" layoutY="29.0" prefHeight="0.0" prefWidth="255.0" text="Stock 4 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
+                                    <Label layoutX="300.0" layoutY="29.0" text="Price:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock4price" layoutX="335.0" layoutY="29.0" text="\$Price" AnchorPane.topAnchor="29.0" />
+                                    <Label layoutX="400.0" layoutY="28.0" text="Volume:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock4volume" layoutX="455.0" layoutY="28.0" text="Volume" AnchorPane.topAnchor="29.0" />
+                                    <Label layoutX="525.0" layoutY="29.0" text="High:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock4high" layoutX="560.0" layoutY="29.0" text="\$High" AnchorPane.topAnchor="29.0" />
+                                    <Label layoutX="620.0" layoutY="29.0" text="Low:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock4low" layoutX="650.0" layoutY="29.0" text="\$Low" AnchorPane.topAnchor="29.0" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </HBox>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="74.0" minWidth="0.0" prefHeight="74.0" prefWidth="160.0">
+                        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="74.0" prefWidth="160.0">
                            <children>
-                              <Label layoutX="14.0" layoutY="29.0" text="5" />
-                              <Label fx:id="stock5name" layoutX="40.0" layoutY="29.0" prefHeight="0.0" prefWidth="255.0" text="Stock 5 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
-                              <Label layoutX="300.0" layoutY="29.0" text="Price:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock5price" layoutX="335.0" layoutY="29.0" text="\$Price" AnchorPane.topAnchor="29.0" />
-                              <Label layoutX="400.0" layoutY="29.0" text="Volume:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock5volume" layoutX="455.0" layoutY="29.0" text="Volume" AnchorPane.topAnchor="29.0" />
-                              <Label layoutX="525.0" layoutY="29.0" text="High:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock5high" layoutX="560.0" layoutY="29.0" text="\$High" AnchorPane.topAnchor="29.0" />
-                              <Label layoutX="620.0" layoutY="29.0" text="Low:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock5low" layoutX="650.0" layoutY="29.0" text="\$Low" AnchorPane.topAnchor="29.0" />
+                              <HBox layoutX="14.0" layoutY="29.0" spacing="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="29.0" text="5" />
+                                    <Label fx:id="stock5name" layoutX="40.0" layoutY="29.0" prefHeight="0.0" prefWidth="255.0" text="Stock 5 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
+                                    <Label layoutX="300.0" layoutY="29.0" text="Price:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock5price" layoutX="335.0" layoutY="29.0" text="\$Price" AnchorPane.topAnchor="29.0" />
+                                    <Label layoutX="400.0" layoutY="29.0" text="Volume:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock5volume" layoutX="455.0" layoutY="29.0" text="Volume" AnchorPane.topAnchor="29.0" />
+                                    <Label layoutX="525.0" layoutY="29.0" text="High:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock5high" layoutX="560.0" layoutY="29.0" text="\$High" AnchorPane.topAnchor="29.0" />
+                                    <Label layoutX="620.0" layoutY="29.0" text="Low:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock5low" layoutX="650.0" layoutY="29.0" text="\$Low" AnchorPane.topAnchor="29.0" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </HBox>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="74.0" minWidth="0.0" prefHeight="74.0" prefWidth="160.0">
+                        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="74.0" prefWidth="160.0">
                            <children>
-                              <Label layoutX="14.0" layoutY="29.0" text="6" />
-                              <Label fx:id="stock6name" layoutX="40.0" layoutY="29.0" prefHeight="0.0" prefWidth="255.0" text="Stock 6 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
-                              <Label layoutX="300.0" layoutY="29.0" text="Price:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock6price" layoutX="335.0" layoutY="29.0" text="\$Price" AnchorPane.topAnchor="29.0" />
-                              <Label layoutX="400.0" layoutY="29.0" text="Volume:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock6volume" layoutX="455.0" layoutY="29.0" text="Volume" AnchorPane.topAnchor="29.0" />
-                              <Label layoutX="525.0" layoutY="29.0" text="High:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock6high" layoutX="560.0" layoutY="29.0" text="\$High" AnchorPane.topAnchor="29.0" />
-                              <Label layoutX="620.0" layoutY="29.0" text="Low:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock6low" layoutX="650.0" layoutY="29.0" text="\$Low" AnchorPane.topAnchor="29.0" />
+                              <HBox layoutX="14.0" layoutY="29.0" spacing="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="29.0" text="6" />
+                                    <Label fx:id="stock6name" layoutX="40.0" layoutY="29.0" prefHeight="0.0" prefWidth="255.0" text="Stock 6 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
+                                    <Label layoutX="300.0" layoutY="29.0" text="Price:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock6price" layoutX="335.0" layoutY="29.0" text="\$Price" AnchorPane.topAnchor="29.0" />
+                                    <Label layoutX="400.0" layoutY="29.0" text="Volume:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock6volume" layoutX="455.0" layoutY="29.0" text="Volume" AnchorPane.topAnchor="29.0" />
+                                    <Label layoutX="525.0" layoutY="29.0" text="High:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock6high" layoutX="560.0" layoutY="29.0" text="\$High" AnchorPane.topAnchor="29.0" />
+                                    <Label layoutX="620.0" layoutY="29.0" text="Low:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock6low" layoutX="650.0" layoutY="29.0" text="\$Low" AnchorPane.topAnchor="29.0" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </HBox>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="74.0" minWidth="0.0" prefHeight="74.0" prefWidth="160.0">
+                        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="74.0" prefWidth="160.0">
                            <children>
-                              <Label layoutX="14.0" layoutY="29.0" text="7" />
-                              <Label fx:id="stock7name" layoutX="40.0" layoutY="29.0" prefHeight="0.0" prefWidth="255.0" text="Stock 7 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
-                              <Label layoutX="300.0" layoutY="29.0" text="Price:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock7price" layoutX="335.0" layoutY="29.0" text="\$Price" AnchorPane.topAnchor="29.0" />
-                              <Label layoutX="400.0" layoutY="28.0" text="Volume:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock7volume" layoutX="455.0" layoutY="28.0" text="Volume" AnchorPane.topAnchor="29.0" />
-                              <Label layoutX="525.0" layoutY="29.0" text="High:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock7high" layoutX="560.0" layoutY="29.0" text="\$High" AnchorPane.topAnchor="29.0" />
-                              <Label layoutX="620.0" layoutY="29.0" text="Low:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock7low" layoutX="650.0" layoutY="29.0" text="\$Low" AnchorPane.topAnchor="29.0" />
+                              <HBox layoutX="14.0" layoutY="29.0" spacing="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="29.0" text="7" />
+                                    <Label fx:id="stock7name" layoutX="40.0" layoutY="29.0" prefHeight="0.0" prefWidth="255.0" text="Stock 7 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
+                                    <Label layoutX="300.0" layoutY="29.0" text="Price:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock7price" layoutX="335.0" layoutY="29.0" text="\$Price" AnchorPane.topAnchor="29.0" />
+                                    <Label layoutX="400.0" layoutY="28.0" text="Volume:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock7volume" layoutX="455.0" layoutY="28.0" text="Volume" AnchorPane.topAnchor="29.0" />
+                                    <Label layoutX="525.0" layoutY="29.0" text="High:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock7high" layoutX="560.0" layoutY="29.0" text="\$High" AnchorPane.topAnchor="29.0" />
+                                    <Label layoutX="620.0" layoutY="29.0" text="Low:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock7low" layoutX="650.0" layoutY="29.0" text="\$Low" AnchorPane.topAnchor="29.0" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </HBox>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="74.0" minWidth="0.0" prefHeight="74.0">
+                        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="74.0">
                            <children>
-                              <Label layoutX="14.0" layoutY="29.0" text="8" />
-                              <Label fx:id="stock8name" layoutX="40.0" layoutY="29.0" prefHeight="0.0" prefWidth="255.0" text="Stock 8 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
-                              <Label layoutX="300.0" layoutY="29.0" text="Price:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock8price" layoutX="335.0" layoutY="29.0" text="\$Price" AnchorPane.topAnchor="29.0" />
-                              <Label layoutX="400.0" layoutY="28.0" text="Volume:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock8volume" layoutX="455.0" layoutY="29.0" text="Volume" AnchorPane.topAnchor="29.0" />
-                              <Label layoutX="525.0" layoutY="29.0" text="High:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock8high" layoutX="560.0" layoutY="29.0" text="\$High" AnchorPane.topAnchor="29.0" />
-                              <Label layoutX="620.0" layoutY="29.0" text="Low:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock8low" layoutX="650.0" layoutY="29.0" text="\$Low" AnchorPane.topAnchor="29.0" />
+                              <HBox layoutX="14.0" layoutY="29.0" spacing="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="29.0" text="8" />
+                                    <Label fx:id="stock8name" layoutX="40.0" layoutY="29.0" prefHeight="0.0" prefWidth="255.0" text="Stock 8 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
+                                    <Label layoutX="300.0" layoutY="29.0" text="Price:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock8price" layoutX="335.0" layoutY="29.0" text="\$Price" AnchorPane.topAnchor="29.0" />
+                                    <Label layoutX="400.0" layoutY="28.0" text="Volume:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock8volume" layoutX="455.0" layoutY="29.0" text="Volume" AnchorPane.topAnchor="29.0" />
+                                    <Label layoutX="525.0" layoutY="29.0" text="High:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock8high" layoutX="560.0" layoutY="29.0" text="\$High" AnchorPane.topAnchor="29.0" />
+                                    <Label layoutX="620.0" layoutY="29.0" text="Low:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock8low" layoutX="650.0" layoutY="29.0" text="\$Low" AnchorPane.topAnchor="29.0" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </HBox>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="10.0" layoutY="10.0" maxHeight="72.0" minHeight="74.0" minWidth="0.0" prefHeight="74.0" prefWidth="160.0">
+                        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="74.0" prefWidth="160.0">
                            <children>
-                              <Label layoutX="14.0" layoutY="29.0" text="9" />
-                              <Label fx:id="stock9name" layoutX="40.0" layoutY="29.0" prefHeight="0.0" prefWidth="255.0" text="Stock 9 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
-                              <Label layoutX="300.0" layoutY="29.0" text="Price:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock9price" layoutX="335.0" layoutY="29.0" text="\$Price" AnchorPane.topAnchor="29.0" />
-                              <Label layoutX="400.0" layoutY="29.0" text="Volume:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock9volume" layoutX="455.0" layoutY="29.0" text="Volume" AnchorPane.topAnchor="29.0" />
-                              <Label layoutX="525.0" layoutY="29.0" text="High:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock9high" layoutX="560.0" layoutY="29.0" text="\$High" AnchorPane.topAnchor="29.0" />
-                              <Label layoutX="620.0" layoutY="29.0" text="Low:" AnchorPane.topAnchor="29.0" />
-                              <Label fx:id="stock9low" layoutX="650.0" layoutY="29.0" text="\$Low" AnchorPane.topAnchor="29.0" />
+                              <HBox layoutX="14.0" layoutY="29.0" spacing="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="29.0" text="9" />
+                                    <Label fx:id="stock9name" layoutX="40.0" layoutY="29.0" prefHeight="0.0" prefWidth="255.0" text="Stock 9 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
+                                    <Label layoutX="300.0" layoutY="29.0" text="Price:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock9price" layoutX="335.0" layoutY="29.0" text="\$Price" AnchorPane.topAnchor="29.0" />
+                                    <Label layoutX="400.0" layoutY="29.0" text="Volume:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock9volume" layoutX="455.0" layoutY="29.0" text="Volume" AnchorPane.topAnchor="29.0" />
+                                    <Label layoutX="525.0" layoutY="29.0" text="High:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock9high" layoutX="560.0" layoutY="29.0" text="\$High" AnchorPane.topAnchor="29.0" />
+                                    <Label layoutX="620.0" layoutY="29.0" text="Low:" AnchorPane.topAnchor="29.0" />
+                                    <Label fx:id="stock9low" layoutX="650.0" layoutY="29.0" text="\$Low" AnchorPane.topAnchor="29.0" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </HBox>
                            </children>
                         </AnchorPane>
                     </items>
                   </SplitPane>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="10.0" layoutY="10.0" maxWidth="220.0" minHeight="0.0" minWidth="220.0" prefHeight="160.0" prefWidth="220.0">
+            <AnchorPane layoutX="10.0" layoutY="10.0">
                <children>
-                  <SplitPane dividerPositions="0.16959798994974876, 0.6180904522613065, 0.8077889447236181" layoutX="17.0" layoutY="165.0" orientation="VERTICAL" prefHeight="798.0" prefWidth="194.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <SplitPane dividerPositions="0.16959798994974876, 0.6180904522613065, 0.8077889447236181" layoutX="17.0" layoutY="165.0" orientation="VERTICAL" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="192.0" prefHeight="296.0" prefWidth="192.0">
                            <children>
@@ -473,12 +536,12 @@
                                        <VBox.margin>
                                           <Insets bottom="10.0" />
                                        </VBox.margin></Label>
-                                    <ChoiceBox fx:id="stockPicker" layoutX="21.0" layoutY="30.0" prefHeight="25.0" prefWidth="140.0">
+                                    <ChoiceBox fx:id="actionPicker" layoutX="21.0" layoutY="30.0" prefHeight="25.0" prefWidth="140.0">
                                        <VBox.margin>
                                           <Insets />
                                        </VBox.margin>
                                     </ChoiceBox>
-                                    <ChoiceBox fx:id="actionPicker" layoutX="21.0" layoutY="73.0" prefWidth="140.0">
+                                    <ChoiceBox fx:id="stockPicker" layoutX="21.0" layoutY="73.0" prefWidth="140.0">
                                        <VBox.margin>
                                           <Insets />
                                        </VBox.margin>
