@@ -7,13 +7,13 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="gamePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hfm.HFMController">
+<AnchorPane fx:id="gamePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hfm.HFMController">
    <children>
-      <SplitPane dividerPositions="0.5, 1.0" layoutX="153.0" layoutY="224.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.22650375939849623, 0.7885338345864662" layoutX="153.0" layoutY="224.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane>
                <children>
-                  <SplitPane dividerPositions="0.31532663316582915" layoutX="68.0" layoutY="272.0" orientation="VERTICAL" prefHeight="798.0" prefWidth="240.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <SplitPane dividerPositions="0.31532663316582915" layoutX="68.0" layoutY="272.0" orientation="VERTICAL" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
@@ -41,7 +41,7 @@
                                                          <items>
                                                             <VBox prefHeight="108.0" prefWidth="160.0">
                                                                <children>
-                                                                  <Label fx:id="fund1name" layoutY="14.0" prefHeight="36.0" prefWidth="160.0" text="Fund 1 Name" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                                  <Label fx:id="fund1name" layoutY="14.0" prefHeight="36.0" prefWidth="200.0" text="Fund 1 Name" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                                                   <Label fx:id="fund1rank" layoutX="31.0" layoutY="37.0" prefHeight="36.0" prefWidth="160.0" text="Fund 1 Rank" />
                                                                   <Label fx:id="fund1value" layoutX="31.0" layoutY="66.0" prefHeight="36.0" prefWidth="160.0" text="Fund 1 Value" />
                                                                </children>
@@ -57,7 +57,7 @@
                                                          <items>
                                                             <VBox prefHeight="108.0" prefWidth="160.0">
                                                                <children>
-                                                                  <Label fx:id="fund2name" layoutY="14.0" prefHeight="36.0" prefWidth="160.0" text="Fund 2 Name" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                                  <Label fx:id="fund2name" layoutY="14.0" prefHeight="36.0" prefWidth="200.0" text="Fund 2 Name" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                                                   <Label fx:id="fund2rank" layoutX="31.0" layoutY="37.0" prefHeight="36.0" prefWidth="160.0" text="Fund 2 Rank" />
                                                                   <Label fx:id="fund2value" layoutX="31.0" layoutY="66.0" prefHeight="36.0" prefWidth="160.0" text="Fund 2 Value" />
                                                                </children>
@@ -73,7 +73,7 @@
                                                          <items>
                                                             <VBox prefHeight="108.0" prefWidth="160.0">
                                                                <children>
-                                                                  <Label fx:id="fund3name" layoutY="14.0" prefHeight="36.0" prefWidth="160.0" text="Fund 3 Name" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                                  <Label fx:id="fund3name" layoutY="14.0" prefHeight="36.0" prefWidth="200.0" text="Fund 3 Name" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                                                   <Label fx:id="fund3rank" layoutX="31.0" layoutY="37.0" prefHeight="36.0" prefWidth="160.0" text="Fund 3 Rank" />
                                                                   <Label fx:id="fund3value" layoutX="31.0" layoutY="66.0" prefHeight="36.0" prefWidth="160.0" text="Fund 3 Value" />
                                                                </children>
@@ -89,7 +89,7 @@
                                                          <items>
                                                             <VBox prefHeight="108.0" prefWidth="160.0">
                                                                <children>
-                                                                  <Label fx:id="fund4name" layoutY="14.0" prefHeight="36.0" prefWidth="160.0" text="Fund 4 Name" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                                  <Label fx:id="fund4name" layoutY="14.0" prefHeight="36.0" prefWidth="200.0" text="Fund 4 Name" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                                                   <Label fx:id="fund4rank" layoutX="31.0" layoutY="37.0" prefHeight="36.0" prefWidth="160.0" text="Fund 4 Rank" />
                                                                   <Label fx:id="fund4value" layoutX="31.0" layoutY="66.0" prefHeight="36.0" prefWidth="160.0" text="Fund 4 Value" />
                                                                </children>
@@ -105,7 +105,7 @@
                                                          <items>
                                                             <VBox prefHeight="108.0" prefWidth="160.0">
                                                                <children>
-                                                                  <Label fx:id="fund5name" layoutY="14.0" prefHeight="36.0" prefWidth="160.0" text="Fund 5 Name" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                                  <Label fx:id="fund5name" layoutY="14.0" prefHeight="36.0" prefWidth="200.0" text="Fund 5 Name" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                                                   <Label fx:id="fund5rank" layoutX="31.0" layoutY="37.0" prefHeight="36.0" prefWidth="160.0" text="Fund 5 Rank" />
                                                                   <Label fx:id="fund5value" layoutX="31.0" layoutY="66.0" prefHeight="36.0" prefWidth="160.0" text="Fund 5 Value" />
                                                                </children>
@@ -133,17 +133,17 @@
                     <items>
                       <AnchorPane>
                            <children>
-                              <Label layoutX="14.0" layoutY="30.0" text="Turn:" />
-                              <Label fx:id="turnLabel" layoutX="51.0" layoutY="30.0" text="Turn" />
-                              <Label fx:id="statusLabel" alignment="CENTER" layoutX="134.0" prefHeight="74.0" prefWidth="356.0" text="Status" wrapText="true" AnchorPane.topAnchor="0.0" />
-                              <ImageView fx:id="die1" fitHeight="76.0" fitWidth="76.0" layoutX="522.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="0.0" />
-                              <ImageView fx:id="die2" fitHeight="76.0" fitWidth="76.0" layoutX="600.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="0.0" />
-                              <ImageView fx:id="die3" fitHeight="76.0" fitWidth="76.0" layoutX="678.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="0.0" />
+                              <Label layoutX="14.0" layoutY="30.0" text="Turn:" AnchorPane.leftAnchor="10.0" />
+                              <Label fx:id="turnLabel" layoutX="51.0" layoutY="30.0" text="Turn" AnchorPane.leftAnchor="42.0" />
+                              <Label fx:id="statusLabel" alignment="CENTER" layoutX="80.0" prefHeight="74.0" prefWidth="280.0" text="Status" wrapText="true" AnchorPane.topAnchor="0.0" />
+                              <ImageView fx:id="stockDie" fitHeight="76.0" fitWidth="76.0" layoutX="522.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="153.0" AnchorPane.topAnchor="0.0" />
+                              <ImageView fx:id="actionDie" fitHeight="76.0" fitWidth="76.0" layoutX="600.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="77.0" AnchorPane.topAnchor="0.0" />
+                              <ImageView fx:id="amountDie" fitHeight="76.0" fitWidth="76.0" layoutX="678.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children>
                         </AnchorPane>
-                      <AnchorPane minHeight="-Infinity" prefHeight="74.0">
+                      <AnchorPane fx:id="stockPane1" minHeight="-Infinity" prefHeight="74.0">
                            <children>
-                              <HBox layoutX="14.0" layoutY="29.0" spacing="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                              <HBox layoutX="14.0" layoutY="29.0" spacing="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                  <children>
                                     <Label layoutX="14.0" layoutY="30.0" text="1" />
                                     <Label fx:id="stock1name" layoutX="40.0" layoutY="29.0" prefHeight="0.0" prefWidth="255.0" text="Stock 1 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
@@ -162,9 +162,9 @@
                               </HBox>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="74.0" prefWidth="160.0">
+                        <AnchorPane fx:id="stockPane2" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="74.0">
                            <children>
-                              <HBox layoutX="14.0" layoutY="29.0" spacing="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                              <HBox layoutX="14.0" layoutY="29.0" spacing="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                  <children>
                                     <Label layoutX="14.0" layoutY="29.0" text="2" />
                                     <Label fx:id="stock2name" layoutX="40.0" layoutY="29.0" prefHeight="0.0" prefWidth="255.0" text="Stock 2 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
@@ -183,9 +183,9 @@
                               </HBox>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="74.0" prefWidth="160.0">
+                        <AnchorPane fx:id="stockPane3" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="74.0">
                            <children>
-                              <HBox layoutX="14.0" layoutY="28.0" spacing="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                              <HBox layoutX="14.0" layoutY="28.0" spacing="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                  <children>
                                     <Label layoutX="14.0" layoutY="28.0" text="3" />
                                     <Label fx:id="stock3name" layoutX="40.0" layoutY="28.0" prefHeight="0.0" prefWidth="255.0" text="Stock 3 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
@@ -204,9 +204,9 @@
                               </HBox>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="74.0" prefWidth="160.0">
+                        <AnchorPane fx:id="stockPane4" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="74.0">
                            <children>
-                              <HBox layoutX="14.0" layoutY="29.0" spacing="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                              <HBox layoutX="14.0" layoutY="29.0" spacing="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                  <children>
                                     <Label layoutX="14.0" layoutY="29.0" text="4" />
                                     <Label fx:id="stock4name" layoutX="40.0" layoutY="29.0" prefHeight="0.0" prefWidth="255.0" text="Stock 4 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
@@ -225,9 +225,9 @@
                               </HBox>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="74.0" prefWidth="160.0">
+                        <AnchorPane fx:id="stockPane5" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="74.0">
                            <children>
-                              <HBox layoutX="14.0" layoutY="29.0" spacing="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                              <HBox layoutX="14.0" layoutY="29.0" spacing="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                  <children>
                                     <Label layoutX="14.0" layoutY="29.0" text="5" />
                                     <Label fx:id="stock5name" layoutX="40.0" layoutY="29.0" prefHeight="0.0" prefWidth="255.0" text="Stock 5 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
@@ -246,9 +246,9 @@
                               </HBox>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="74.0" prefWidth="160.0">
+                        <AnchorPane fx:id="stockPane6" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="74.0">
                            <children>
-                              <HBox layoutX="14.0" layoutY="29.0" spacing="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                              <HBox layoutX="14.0" layoutY="29.0" spacing="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                  <children>
                                     <Label layoutX="14.0" layoutY="29.0" text="6" />
                                     <Label fx:id="stock6name" layoutX="40.0" layoutY="29.0" prefHeight="0.0" prefWidth="255.0" text="Stock 6 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
@@ -267,9 +267,9 @@
                               </HBox>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="74.0" prefWidth="160.0">
+                        <AnchorPane fx:id="stockPane7" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="74.0">
                            <children>
-                              <HBox layoutX="14.0" layoutY="29.0" spacing="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                              <HBox layoutX="14.0" layoutY="29.0" spacing="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                  <children>
                                     <Label layoutX="14.0" layoutY="29.0" text="7" />
                                     <Label fx:id="stock7name" layoutX="40.0" layoutY="29.0" prefHeight="0.0" prefWidth="255.0" text="Stock 7 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
@@ -288,9 +288,9 @@
                               </HBox>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="74.0">
+                        <AnchorPane fx:id="stockPane8" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="74.0">
                            <children>
-                              <HBox layoutX="14.0" layoutY="29.0" spacing="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                              <HBox layoutX="14.0" layoutY="29.0" spacing="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                  <children>
                                     <Label layoutX="14.0" layoutY="29.0" text="8" />
                                     <Label fx:id="stock8name" layoutX="40.0" layoutY="29.0" prefHeight="0.0" prefWidth="255.0" text="Stock 8 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
@@ -309,9 +309,9 @@
                               </HBox>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="74.0" prefWidth="160.0">
+                        <AnchorPane fx:id="stockPane9" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="74.0">
                            <children>
-                              <HBox layoutX="14.0" layoutY="29.0" spacing="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                              <HBox layoutX="14.0" layoutY="29.0" spacing="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                  <children>
                                     <Label layoutX="14.0" layoutY="29.0" text="9" />
                                     <Label fx:id="stock9name" layoutX="40.0" layoutY="29.0" prefHeight="0.0" prefWidth="255.0" text="Stock 9 Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="29.0" />
@@ -342,7 +342,7 @@
                            <children>
                               <VBox prefHeight="132.0" prefWidth="192.0" spacing="12.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Label fx:id="playerFund" alignment="CENTER" layoutX="15.0" layoutY="14.0" prefHeight="30.0" prefWidth="220.0" text="Player Fund Name" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <Label fx:id="playerFund" alignment="CENTER" layoutX="15.0" layoutY="14.0" prefHeight="30.0" prefWidth="250.0" text="Player Fund Name" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                     <HBox layoutX="14.0" layoutY="49.0" spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                        <children>
                                           <Label layoutX="14.0" layoutY="49.0" prefWidth="130.0" text="Performance Ranking:">
@@ -397,10 +397,10 @@
                            <children>
                               <VBox prefHeight="351.0" prefWidth="192.0" spacing="17.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Label alignment="CENTER" layoutX="82.0" layoutY="14.0" prefHeight="30.0" prefWidth="203.0" text="Stocks" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <Label alignment="CENTER" layoutX="82.0" layoutY="14.0" prefHeight="30.0" prefWidth="250.0" text="Stocks" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                     <HBox layoutX="14.0" layoutY="39.0">
                                        <children>
-                                          <Label fx:id="playerStock1name" layoutX="14.0" layoutY="39.0" prefWidth="170.0" text="Stock 1">
+                                          <Label fx:id="playerStock1name" layoutX="14.0" layoutY="39.0" prefWidth="200.0" text="Stock 1">
                                              <padding>
                                                 <Insets left="5.0" />
                                              </padding>
@@ -414,7 +414,7 @@
                                     </HBox>
                                     <HBox layoutX="8.0" layoutY="68.0">
                                        <children>
-                                          <Label fx:id="playerStock2name" layoutX="8.0" layoutY="68.0" prefWidth="170.0" text="Stock 2">
+                                          <Label fx:id="playerStock2name" layoutX="8.0" layoutY="68.0" prefWidth="200.0" text="Stock 2">
                                              <padding>
                                                 <Insets left="5.0" />
                                              </padding>
@@ -428,7 +428,7 @@
                                     </HBox>
                                     <HBox layoutX="14.0" layoutY="96.0">
                                        <children>
-                                          <Label fx:id="playerStock3name" layoutX="14.0" layoutY="96.0" prefWidth="170.0" text="Stock 3">
+                                          <Label fx:id="playerStock3name" layoutX="14.0" layoutY="96.0" prefWidth="200.0" text="Stock 3">
                                              <padding>
                                                 <Insets left="5.0" />
                                              </padding>
@@ -442,7 +442,7 @@
                                     </HBox>
                                     <HBox layoutX="14.0" layoutY="122.0">
                                        <children>
-                                          <Label fx:id="playerStock4name" layoutX="14.0" layoutY="122.0" prefWidth="170.0" text="Stock 4">
+                                          <Label fx:id="playerStock4name" layoutX="14.0" layoutY="122.0" prefWidth="200.0" text="Stock 4">
                                              <padding>
                                                 <Insets left="5.0" />
                                              </padding>
@@ -456,7 +456,7 @@
                                     </HBox>
                                     <HBox layoutX="14.0" layoutY="150.0">
                                        <children>
-                                          <Label fx:id="playerStock5name" layoutX="14.0" layoutY="150.0" prefWidth="170.0" text="Stock 5">
+                                          <Label fx:id="playerStock5name" layoutX="14.0" layoutY="150.0" prefWidth="200.0" text="Stock 5">
                                              <padding>
                                                 <Insets left="5.0" />
                                              </padding>
@@ -470,7 +470,7 @@
                                     </HBox>
                                     <HBox layoutX="18.0" layoutY="176.0">
                                        <children>
-                                          <Label fx:id="playerStock6name" layoutX="18.0" layoutY="176.0" prefWidth="170.0" text="Stock 6">
+                                          <Label fx:id="playerStock6name" layoutX="18.0" layoutY="176.0" prefWidth="200.0" text="Stock 6">
                                              <padding>
                                                 <Insets left="5.0" />
                                              </padding>
@@ -484,7 +484,7 @@
                                     </HBox>
                                     <HBox layoutX="14.0" layoutY="218.0">
                                        <children>
-                                          <Label fx:id="playerStock7name" layoutX="14.0" layoutY="218.0" prefWidth="170.0" text="Stock 7">
+                                          <Label fx:id="playerStock7name" layoutX="14.0" layoutY="218.0" prefWidth="200.0" text="Stock 7">
                                              <padding>
                                                 <Insets left="5.0" />
                                              </padding>
@@ -498,7 +498,7 @@
                                     </HBox>
                                     <HBox layoutX="8.0" layoutY="249.0">
                                        <children>
-                                          <Label fx:id="playerStock8name" layoutX="8.0" layoutY="249.0" prefWidth="170.0" text="Stock 8">
+                                          <Label fx:id="playerStock8name" layoutX="8.0" layoutY="249.0" prefWidth="200.0" text="Stock 8">
                                              <padding>
                                                 <Insets left="5.0" />
                                              </padding>
@@ -512,7 +512,7 @@
                                     </HBox>
                                     <HBox layoutX="8.0" layoutY="282.0">
                                        <children>
-                                          <Label fx:id="playerStock9name" layoutX="8.0" layoutY="282.0" prefWidth="170.0" text="Stock 9">
+                                          <Label fx:id="playerStock9name" layoutX="8.0" layoutY="282.0" prefWidth="200.0" text="Stock 9">
                                              <padding>
                                                 <Insets left="5.0" />
                                              </padding>

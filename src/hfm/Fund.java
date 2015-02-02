@@ -6,6 +6,9 @@
 
 package hfm;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 /**
  *
  * @author jcalvert
@@ -14,13 +17,14 @@ public class Fund implements java.io.Serializable{
     
     private final String Name;
     private final String Password;
-    private int Cash;
+    private BigDecimal Cash;
     private int[] stocks;   
     
     public Fund(String n, String p, int c, int[] s){
         Name = n;
         Password = p;
-        Cash = c;
+        Cash = new BigDecimal(c);
+        Cash = Cash.setScale(2, RoundingMode.CEILING);
         stocks = new int[9];      
     }
 
@@ -48,11 +52,11 @@ public class Fund implements java.io.Serializable{
         return Password;
     }
     
-    public int getCash(){
+    public BigDecimal getCash(){
         return Cash;
     }
     
-    public void setCash(int i){
+    public void setCash(BigDecimal i){
         Cash = i;
     }   
 }

@@ -1,8 +1,10 @@
 package hfm;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -14,8 +16,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
 
 public class HFMController implements Initializable{
 
@@ -26,15 +31,24 @@ public class HFMController implements Initializable{
     @FXML private AnchorPane AI3;
     @FXML private AnchorPane AI4;
     @FXML private AnchorPane AI5;
+    @FXML private AnchorPane stockPane1;
+    @FXML private AnchorPane stockPane2;
+    @FXML private AnchorPane stockPane3;
+    @FXML private AnchorPane stockPane4;
+    @FXML private AnchorPane stockPane5;
+    @FXML private AnchorPane stockPane6;
+    @FXML private AnchorPane stockPane7;
+    @FXML private AnchorPane stockPane8;
+    @FXML private AnchorPane stockPane9;
 
     @FXML private ImageView fund1img;
     @FXML private ImageView fund2img;
     @FXML private ImageView fund3img;
     @FXML private ImageView fund4img;
     @FXML private ImageView fund5img;
-    @FXML private ImageView die1;
-    @FXML private ImageView die2;
-    @FXML private ImageView die3;
+    @FXML private ImageView stockDie;
+    @FXML private ImageView actionDie;
+    @FXML private ImageView amountDie;
     
     @FXML private Label turnLabel;
     @FXML private Label statusLabel;
@@ -136,7 +150,8 @@ public class HFMController implements Initializable{
     
     // Logon Info
     static String pNAME;
-    static int pCASH;
+    static BigDecimal pEQUITY;
+    static BigDecimal pCASH;
     static int[] pSTOCKS;
     static boolean acc;
     Logon log;
@@ -148,24 +163,35 @@ public class HFMController implements Initializable{
     
     
     // Initialization
-    static int TURN, pEQUITY;
+    static int TURN, die1, die2, die3;
     static int[] STOCKVOL, RANKS;
     private final int nameNum = 14;
-    public static ArrayList<Stock> STOCKS; //stock1, stock2, stock3, stock4, stock5, stock6, stock7, stock8, stock9;
+    public static ArrayList<Stock> STOCKS;
     public ArrayList<Label> SNL, SPL, SVL, SHL, SLL, PSN, PSO, FN, FR, FV;
+    private ArrayList<Background> stockBackD, stockBackU;
+    private ArrayList<AnchorPane> stockBacks;      
     private String[] fundNames;
     static String[] stockNames;
+    Random r;
+    private Image DOWN, PAY, HALT, UP, SBD1, SBD2, SBD3, SBD4, SBD5, SBD6, SBD7, SBD8, SBD9, SBU1, SBU2, SBU3, SBU4, SBU5, SBU6, SBU7, SBU8, SBU9, SBH, SBN;
+    private BackgroundImage bSBD1, bSBD2, bSBD3, bSBD4, bSBD5, bSBD6, bSBD7, bSBD8, bSBD9, bSBU1, bSBU2, bSBU3, bSBU4, bSBU5, bSBU6, bSBU7, bSBU8, bSBU9, bSBH, bSBN;
+    private Background bgSBD1, bgSBD2, bgSBD3, bgSBD4, bgSBD5, bgSBD6, bgSBD7, bgSBD8, bgSBD9, bgSBU1, bgSBU2, bgSBU3, bgSBU4, bgSBU5, bgSBU6, bgSBU7, bgSBU8, bgSBU9, bgSBH, bgSBN;
+    
     private String[] FNAME1 = {"Black","Red","Golden","Silver","First","Premier","Apex","Provincial","Countrywide","Global",
                               "Aspirational","Crystal","National","Interdimensional","Universal"};
     private String[] FNAME2 = {"Squid","Rock","Tree","Horizon","Investors","Capital","Moneybags","Snatchem","Lupine","Porkbelly",
                               "Wealth","Accretion","Delta","Omega","Alpha Seeking"};
     private String[] FNAME3 = {"Trust","Partners","Associates","Holdings","Group","Capital","Securities","Markets","Incorporated","Funds",
                               "Fund","Capital Group","Management","Equity Holdings","Advisors"};
-    
+        
     private String[] SNAME1 = {"Platypus","Viceroy","Tachyon","Pestilence","Bugbear","Clearcut","Windy Field","The Happy Pinecone","FDMR","Birdhouses",
-                              "The Golden Snakeskin","Onyx","Presidio","Ubiquitous","Pyramid"};
+                              "The Golden Snakeskin","Onyx","Presidio","Ubiquitous","Pyramid","Frisky Squirrels","Stellar Express","Planetary","Exelsior",
+                              "J. Chang","Abysmal Glare","Speed","Tuna Belly","Gentleman","Style","Focus","Eagle Wing","Red Door","Citadel","Olympia","Terra Nova",
+                              "Anchor","Crown","Lucky Star","Lightning Bug","Billy Brat","Black Top","BoxTop","Saturn","Bakerland","Secret Circle"};
     private String[] SNAME2 = {"INC","Corporation","LTD","GmbH","Limited","Company","Incorporated","LLC","Zaibatsu","Chaebol",
-                              "Conglamorate","Corp.","Systems","Solutions","S.A."};
+                              "Conglamorate","Corp.","Systems","Solutions","S.A."};   
+    private List<String> randName1 = new ArrayList<String>();
+    private List<String> randName2 = new ArrayList<String>();  
     
     public HFMController(){
         TURN = 0;
@@ -186,19 +212,32 @@ public class HFMController implements Initializable{
         FN = new ArrayList<>();
         FR = new ArrayList<>();
         FV = new ArrayList<>();
-        
+        stockBackD = new ArrayList<>();
+        stockBackU = new ArrayList<>();
+        stockBacks = new ArrayList<>();
+        r = new Random();
         fundNames = new String[5];
         stockNames = new String[9];
         STOCKVOL = new int[9];
         fVALUE = new BigDecimal[5];
+        initLists();
         initAIs();
         initStocks();
-        volumeControl();        
+        volumeControl();  
+        loadImg();
+    }
+    
+    private void initLists(){
+        for(int i = 0;i < SNAME1.length; i++){
+            randName1.add(SNAME1[i]);            
+        }
+        for(int i = 0;i < SNAME2.length; i++){           
+            randName2.add(SNAME2[i]);
+        }
     }
     
     private void initAIs(){
         String n = "";
-        Random r = new Random();
         int c = 0;       
         while(c < 5){
             n += FNAME1[r.nextInt(nameNum)] + " " + FNAME2[r.nextInt(nameNum)] + " " + FNAME3[r.nextInt(nameNum)];
@@ -219,10 +258,14 @@ public class HFMController implements Initializable{
         log.readStocks();
         if(STOCKS.isEmpty()){
             String n = "";
-            Random r = new Random();
             int c = 0;
             while(c < 9){
-                n += SNAME1[r.nextInt(nameNum)] + " " + SNAME2[r.nextInt(nameNum)];
+                int s1 = r.nextInt(randName1.size());
+                int s2 = r.nextInt(randName2.size());
+                n += randName1.get(s1) + " " + randName2.get(s2);
+                    randName1.remove(s1);
+                    System.out.println("randName1 size: " + randName1.size());
+//                    randName2.remove(s2);
                     for(int i = 0;i<5;i++){
                     if(n.equals(stockNames[i])) continue;
                 }
@@ -325,9 +368,10 @@ public class HFMController implements Initializable{
         FV.add(fund3value);
         FV.add(fund4value);
         FV.add(fund5value);
+
     }    
     
-    private void setLabels(){
+    private void initLabels(){
         turnLabel.setText(Integer.toString(TURN));
         statusLabel.setText("Welcome to Hedge Fund Manager, " + player.getName());
         for(int i = 0;i < 9; i++){
@@ -364,23 +408,364 @@ public class HFMController implements Initializable{
             fv.setText(fVALUE[i].toString());
         }
         playerFund.setText(pNAME + " Hedge Fund");
-        playerRank.setText("AWESOME");
-        playerEquity.setText(Integer.toString(pEQUITY));
-        playerCash.setText(Integer.toString(pCASH));
+        playerRank.setText("AWESOME"); // CHANGE to real rank
+        playerEquity.setText("$" + pEQUITY.toString());
+        playerCash.setText(pCASH.toString());
     }
     
     private void loadImg(){
-       // ONE     = new Image(FXMLCrapsController.class.getResourceAsStream("1.png"));
+      
+       DOWN = new Image(HFMController.class.getResourceAsStream("IMG/DOWN.png"));
+       PAY = new Image(HFMController.class.getResourceAsStream("IMG/PAY.png"));
+       HALT = new Image(HFMController.class.getResourceAsStream("IMG/HALT.png"));
+       UP = new Image(HFMController.class.getResourceAsStream("IMG/UP.png"));
+       SBD1 = new Image(HFMController.class.getResourceAsStream("IMG/stockBackDown1.png"));
+       bSBD1 = new BackgroundImage(SBD1,null,null,null,null);
+       bgSBD1 = new Background(bSBD1);
+       SBD2 = new Image(HFMController.class.getResourceAsStream("IMG/stockBackDown2.png"));
+       bSBD2 = new BackgroundImage(SBD2,null,null,null,null);
+       bgSBD2 = new Background(bSBD2);
+       SBD3 = new Image(HFMController.class.getResourceAsStream("IMG/stockBackDown3.png"));
+       bSBD3 = new BackgroundImage(SBD3,null,null,null,null);
+       bgSBD3 = new Background(bSBD3);
+       SBD4 = new Image(HFMController.class.getResourceAsStream("IMG/stockBackDown4.png"));
+       bSBD4 = new BackgroundImage(SBD4,null,null,null,null);
+       bgSBD4 = new Background(bSBD4);
+       SBD5 = new Image(HFMController.class.getResourceAsStream("IMG/stockBackDown5.png"));
+       bSBD5 = new BackgroundImage(SBD5,null,null,null,null);
+       bgSBD5 = new Background(bSBD5);
+       SBD6 = new Image(HFMController.class.getResourceAsStream("IMG/stockBackDown6.png"));
+       bSBD6 = new BackgroundImage(SBD6,null,null,null,null);
+       bgSBD6 = new Background(bSBD6);
+       SBD7 = new Image(HFMController.class.getResourceAsStream("IMG/stockBackDown7.png"));
+       bSBD7 = new BackgroundImage(SBD7,null,null,null,null);
+       bgSBD7 = new Background(bSBD7);
+       SBD8 = new Image(HFMController.class.getResourceAsStream("IMG/stockBackDown8.png"));
+       bSBD8 = new BackgroundImage(SBD8,null,null,null,null);
+       bgSBD8 = new Background(bSBD8);
+       SBD9 = new Image(HFMController.class.getResourceAsStream("IMG/stockBackDown9.png"));
+       bSBD9 = new BackgroundImage(SBD9,null,null,null,null);
+       bgSBD9 = new Background(bSBD9);
+       SBU1 = new Image(HFMController.class.getResourceAsStream("IMG/stockBackUp1.png"));
+       bSBU1 = new BackgroundImage(SBU1,null,null,null,null);
+       bgSBU1 = new Background(bSBU1);
+       SBU2 = new Image(HFMController.class.getResourceAsStream("IMG/stockBackUp2.png"));
+       bSBU2 = new BackgroundImage(SBU2,null,null,null,null);
+       bgSBU2 = new Background(bSBU2);
+       SBU3 = new Image(HFMController.class.getResourceAsStream("IMG/stockBackUp3.png"));
+       bSBU3 = new BackgroundImage(SBU3,null,null,null,null);
+       bgSBU3 = new Background(bSBU3);
+       SBU4 = new Image(HFMController.class.getResourceAsStream("IMG/stockBackUp4.png"));
+       bSBU4 = new BackgroundImage(SBU4,null,null,null,null);
+       bgSBU4 = new Background(bSBU4);
+       SBU5 = new Image(HFMController.class.getResourceAsStream("IMG/stockBackUp5.png"));
+       bSBU5 = new BackgroundImage(SBU5,null,null,null,null);
+       bgSBU5 = new Background(bSBU5);
+       SBU6 = new Image(HFMController.class.getResourceAsStream("IMG/stockBackUp6.png"));
+       bSBU6 = new BackgroundImage(SBU6,null,null,null,null);
+       bgSBU6 = new Background(bSBU6);
+       SBU7 = new Image(HFMController.class.getResourceAsStream("IMG/stockBackUp7.png"));
+       bSBU7 = new BackgroundImage(SBU7,null,null,null,null);
+       bgSBU7 = new Background(bSBU7);
+       SBU8 = new Image(HFMController.class.getResourceAsStream("IMG/stockBackUp8.png"));    
+       bSBU8 = new BackgroundImage(SBU8,null,null,null,null);
+       bgSBU8 = new Background(bSBU8);
+       SBU9 = new Image(HFMController.class.getResourceAsStream("IMG/stockBackUp9.png"));    
+       bSBU9 = new BackgroundImage(SBU9,null,null,null,null);
+       bgSBU9 = new Background(bSBU9);      
+       
+       SBH = new Image(HFMController.class.getResourceAsStream("IMG/stockBackHalt.png"));    
+       bSBH = new BackgroundImage(SBH,null,null,null,null);
+       bgSBH = new Background(bSBH); 
+       SBN = new Image(HFMController.class.getResourceAsStream("IMG/stockBackNew.png"));    
+       bSBN = new BackgroundImage(SBN,null,null,null,null);
+       bgSBN = new Background(bSBN); 
     }
     
     @FXML void executeButtonAction(ActionEvent event) {
+        statusLabel.setText("");
+        if(actionPicker.getSelectionModel().getSelectedIndex() == -1){
+            statusLabel.setText("You must pick an action!");
+                return;
+        }
+        if(stockPicker.getSelectionModel().getSelectedIndex() == -1){
+            statusLabel.setText("You must pick a stock!");
+                return;
+        }
+        
+        if(actionPicker.getSelectionModel().getSelectedIndex() == 0){
+            int i = stockPicker.getSelectionModel().getSelectedIndex();           
+            if(STOCKS.get(i).isHalt(TURN)){
+                statusLabel.setText(STOCKS.get(i).getStockName() + " is under a trading halt! Cannot buy or sell shares.");
+                return;
+            }
+            BigDecimal p = STOCKS.get(i).getStockValue().multiply(new BigDecimal(100));
+            System.out.println("p cost: " + p.toString());
+            if(pCASH.compareTo(p) == -1){
+                statusLabel.setText("Insufficient Funds!");
+                return;
+            } else {
+                pSTOCKS[i] += 100;
+                pCASH = pCASH.subtract(p);
+                playerEquity.setText("$" + pEQUITY.toString());               
+                playerCash.setText("$" + pCASH.toString());
+                PSO.get(i).setText(Integer.toString(pSTOCKS[i])); 
+                statusLabel.setText("PURCHASE: 100 shares of " + stockNames[i]);
+                
+                //SVL.get(die1).setText(Integer.toString(STOCKVOL[die1]));
+            }                        
+        } else { // SELL
+            int i = stockPicker.getSelectionModel().getSelectedIndex();
+            if(pSTOCKS[i] == 0){
+                statusLabel.setText("You do not own any shares of " + stockNames[i]);
+                return;
+            }
+            if(STOCKS.get(i).isHalt(TURN)){
+                statusLabel.setText(STOCKS.get(i).getStockName() + " is under a trading halt! Cannot buy or sell shares.");
+                return;
+            }
+            BigDecimal p = STOCKS.get(i).getStockValue().multiply(new BigDecimal(100));
+            pSTOCKS[i] -= 100;
+            pCASH = pCASH.add(p);
+            playerEquity.setText("$" + pEQUITY.toString());               
+            playerCash.setText("$" + pCASH.toString());
+            PSO.get(i).setText(Integer.toString(pSTOCKS[i]));
+            statusLabel.setText("SOLD: 100 shares of " + stockNames[i]);
+            
+            //SVL.get(die1).setText(Integer.toString(STOCKVOL[die1]));
+        }
+        volumeControl();
+        playerEquity.setText("$" + pEQUITY.toString());
+        SVL.get(stockPicker.getSelectionModel().getSelectedIndex()).setText(Integer.toString(STOCKVOL[stockPicker.getSelectionModel().getSelectedIndex()]));
         
     }
 
     @FXML void goButtonAction(ActionEvent event) {
+        stockDie.setOpacity(1);
+        actionDie.setOpacity(1);
+        amountDie.setOpacity(1);
+        die1 = r.nextInt(9); // Stocks
+        die2 = r.nextInt(100); // UP=3,DOWN=3,DIV=3,HOLD=1
+        die3 = r.nextInt(10)+1; // Amount 0.10 - 1.00
+
+        // Set stock stockBackU neutral
+       
+        // Check for splits and folds, and reset High, Low, Name, etc
         
+        BigDecimal delta = new BigDecimal(die3).movePointLeft(1);
+        delta = delta.setScale(2, RoundingMode.CEILING);
+               
+        int selector = 0;
+/*        if(die2 < 3) selector = 0;                  // Abysmal
+        if(die2 > 3 && die2 < 10) selector = 1;     // Bad
+        if(die2 > 9 && die2 < 35) selector = 2;     // Negative
+        if(die2 > 34 && die2 < 40) selector = 3;    // Low Div
+        if(die2 > 39 && die2 < 50) selector = 4;    // DIV
+        if(die2 > 49 && die2 < 52) selector = 5;    // HALT
+        if(die2 > 51 && die2 < 62) selector = 6;    // DIV
+        if(die2 > 61 && die2 < 67) selector = 7;    // High Div
+        if(die2 > 66 && die2 < 90) selector = 8;    // Positive
+        if(die2 > 89 && die2 < 97) selector = 9;    // Good
+        if(die2 > 96) selector = 10;                // Awesome
+*/        
+        switch(selector){
+            case 0: // Abysmal
+                actionDie.setImage(DOWN);
+                stockBacks.get(die1).setBackground(stockBackD.get(die1));
+                if(STOCKS.get(die1).getStockValue().compareTo(new BigDecimal(2)) == -1){
+                    stockFold(die1);
+                    break;
+                }
+                if(STOCKS.get(die1).getStockValue().compareTo(delta.multiply(new BigDecimal(5))) == 1){
+                    delta = delta.multiply(new BigDecimal(5));                   
+                } else {
+                    delta = delta.divide(new BigDecimal(2));
+                }
+                statusLabel.setText("DISASTER! Board of " + stockNames[die1] + " convicted of cooking the books! Stock values plunge $" + delta.toString() + " per share!");
+                STOCKS.get(die1).setStockValue(STOCKS.get(die1).getStockValue().subtract(delta));
+                //if(STOCKS.get(die1).getStockValue().compareTo(BigDecimal.ZERO) == -1) stockFold(die1);
+                //STOCKS.get(die1).setStockValue(STOCKS.get(die1).getStockValue().subtract(delta));
+                SPL.get(die1).setText("$" + STOCKS.get(die1).getStockValue().toString());
+                if(STOCKS.get(die1).getStockLow().compareTo(STOCKS.get(die1).getStockValue()) == -1) STOCKS.get(die1).setStockLow(STOCKS.get(die1).getStockValue());
+                SLL.get(die1).setText(STOCKS.get(die1).getStockValue().toString());
+                break;
+            case 1: // Bad
+                actionDie.setImage(DOWN);                               
+                if(STOCKS.get(die1).isHalt(TURN)){
+                    statusLabel.setText(stockNames[die1] + " price frozen due to Trading Halt!");
+                    return;
+                }
+                stockBacks.get(die1).setBackground(stockBackD.get(die1));
+                delta = delta.multiply(new BigDecimal(2));
+                if(STOCKS.get(die1).getStockValue().compareTo(delta) == -1){
+                    stockFold(die1);
+                }
+                statusLabel.setText("Earnings miss! Analysts pessimistic. " + stockNames[die1] + " price drops $" + delta.toString() + " per share!");                
+                STOCKS.get(die1).setStockValue(STOCKS.get(die1).getStockValue().subtract(delta));
+                SPL.get(die1).setText("$" + STOCKS.get(die1).getStockValue().toString());
+                if(STOCKS.get(die1).getStockLow().compareTo(STOCKS.get(die1).getStockValue()) == -1) STOCKS.get(die1).setStockLow(STOCKS.get(die1).getStockValue());
+                SLL.get(die1).setText(STOCKS.get(die1).getStockValue().toString());
+                break;
+            case 2: // Negative
+                actionDie.setImage(DOWN);                
+                if(STOCKS.get(die1).isHalt(TURN)){
+                    statusLabel.setText(stockNames[die1] + " price frozen due to Trading Halt!");
+                    return;
+                }
+                stockBacks.get(die1).setBackground(stockBackD.get(die1));
+                statusLabel.setText(stockNames[die1] + " price drops $" + delta.toString() + " per share!");                
+                STOCKS.get(die1).setStockValue(STOCKS.get(die1).getStockValue().subtract(delta));
+                SPL.get(die1).setText("$" + STOCKS.get(die1).getStockValue().toString());
+                if(STOCKS.get(die1).getStockLow().compareTo(STOCKS.get(die1).getStockValue()) == -1) STOCKS.get(die1).setStockLow(STOCKS.get(die1).getStockValue());
+                SLL.get(die1).setText(STOCKS.get(die1).getStockValue().toString());
+                break;
+            case 3: // Low DIV
+                actionDie.setImage(PAY);
+                if(STOCKS.get(die1).isHalt(TURN)){
+                    statusLabel.setText(stockNames[die1] + " cannot distribute capital during Trading Halt!");
+                    return;
+                }
+                delta.divide(new BigDecimal(2));
+                statusLabel.setText("Due to structural weaknesses, dividends are slashed. " + stockNames[die1] + " only pays $" + delta.toString() + " per share!");
+                BigDecimal lbd = new BigDecimal(pSTOCKS[die1]).multiply(delta);
+                pCASH = pCASH.add(lbd);
+                playerCash.setText("$" + pCASH.toString());
+                break;
+            case 4: // DIV
+                actionDie.setImage(PAY);
+                if(STOCKS.get(die1).isHalt(TURN)){
+                    statusLabel.setText(stockNames[die1] + " cannot distribute capital during Trading Halt!");
+                    return;
+                }
+                statusLabel.setText("Distribution! " + stockNames[die1] + " pays $" + delta.toString() + " per share!");
+                BigDecimal dbd = new BigDecimal(pSTOCKS[die1]).multiply(delta);
+                pCASH = pCASH.add(dbd);
+                playerCash.setText("$" + pCASH.toString());
+                break;
+            case 5: // HALT
+                actionDie.setImage(HALT);
+                stockBacks.get(die1).setBackground(bgSBH);
+                int h = TURN + 11;
+                statusLabel.setText("Hold! " + stockNames[die1] + " under investigation for price fixing. Trading Halt called until turn " + h + "!");
+                STOCKS.get(die1).setHalt(true, h);
+                break;
+            case 6: // DIV
+                actionDie.setImage(PAY);
+                if(STOCKS.get(die1).isHalt(TURN)){
+                    statusLabel.setText(stockNames[die1] + " cannot distribute capital during Trading Halt!");
+                    return;
+                }
+                statusLabel.setText("Distribution! " + stockNames[die1] + " pays $" + delta.toString() + " per share!");
+                BigDecimal bd = new BigDecimal(pSTOCKS[die1]).multiply(delta);
+                pCASH = pCASH.add(bd);
+                playerCash.setText("$" + pCASH.toString());
+                break;
+            case 7: // High DIV
+                actionDie.setImage(PAY);
+                if(STOCKS.get(die1).isHalt(TURN)){
+                    statusLabel.setText(stockNames[die1] + " cannot distribute capital during Trading Halt!");
+                    return;
+                }
+                delta = delta.multiply(new BigDecimal(2));
+                statusLabel.setText("Bonanza! " + stockNames[die1] + " beats earnings estimates by 10%! Disbursement of $" + delta.toString() + " per share!");
+                BigDecimal hbd = new BigDecimal(pSTOCKS[die1]).multiply(delta);
+                pCASH = pCASH.add(hbd);
+                playerCash.setText("$" + pCASH.toString());
+                break;
+            case 8: // Positive
+                actionDie.setImage(UP);
+                if(STOCKS.get(die1).isHalt(TURN)){
+                    statusLabel.setText(stockNames[die1] + " price frozen due to Trading Halt!");
+                    return;
+                }
+                stockBacks.get(die1).setBackground(stockBackU.get(die1));                
+                statusLabel.setText(stockNames[die1] + " price rises $" + delta.toString() + " per share!");
+                STOCKS.get(die1).setStockValue(STOCKS.get(die1).getStockValue().add(delta));
+                SPL.get(die1).setText("$" + STOCKS.get(die1).getStockValue().toString());
+                if(STOCKS.get(die1).getStockHigh().compareTo(STOCKS.get(die1).getStockValue()) == 1) STOCKS.get(die1).setStockHigh(STOCKS.get(die1).getStockValue());
+                SHL.get(die1).setText(STOCKS.get(die1).getStockValue().toString());
+                break;               
+            case 9: // GOOD
+                actionDie.setImage(UP);
+                if(STOCKS.get(die1).isHalt(TURN)){
+                    statusLabel.setText(stockNames[die1] + " price frozen due to Trading Halt!");
+                    return;
+                }
+                stockBacks.get(die1).setBackground(stockBackU.get(die1));                
+                delta = delta.multiply(new BigDecimal(2));
+                statusLabel.setText("Tech Breakthrough! " + stockNames[die1] + " price rockets $" + delta.toString() + " per share!");
+                STOCKS.get(die1).setStockValue(STOCKS.get(die1).getStockValue().add(delta));
+                SPL.get(die1).setText("$" + STOCKS.get(die1).getStockValue().toString());
+                if(STOCKS.get(die1).getStockHigh().compareTo(STOCKS.get(die1).getStockValue()) == 1) STOCKS.get(die1).setStockHigh(STOCKS.get(die1).getStockValue());
+                SHL.get(die1).setText(STOCKS.get(die1).getStockValue().toString());
+                
+                break;
+            case 10: // AWESOME
+                actionDie.setImage(UP);
+                if(STOCKS.get(die1).getStockValue().compareTo(new BigDecimal(18)) == 1){
+                    stockSplit(die1);
+                }
+                stockBacks.get(die1).setBackground(stockBackU.get(die1));
+                if(STOCKS.get(die1).getStockValue().add(delta.multiply(new BigDecimal(5))).compareTo(new BigDecimal(20)) == -1){
+                    delta = delta.multiply(new BigDecimal(5));
+                } else {
+                     if(STOCKS.get(die1).getStockValue().compareTo(new BigDecimal(5)) == -1)
+                    delta = STOCKS.get(die1).getStockValue().multiply(new BigDecimal(2));
+                }
+                statusLabel.setText("Merger! Buyout rumours pump " + stockNames[die1] + " share price! Units up $" + delta.toString() + " per share !");
+                STOCKS.get(die1).setStockValue(STOCKS.get(die1).getStockValue().add(delta));
+                SPL.get(die1).setText("$" + STOCKS.get(die1).getStockValue().toString());
+                if(STOCKS.get(die1).getStockHigh().compareTo(STOCKS.get(die1).getStockValue()) == 1) STOCKS.get(die1).setStockHigh(STOCKS.get(die1).getStockValue());
+                SHL.get(die1).setText(STOCKS.get(die1).getStockValue().toString());
+                break;
+        }
+        volumeControl();
+        playerEquity.setText("$" + pEQUITY.toString());
+        TURN++;
+        turnLabel.setText(Integer.toString(TURN));
     }
 
+    private void stockFold(int s){
+        String temp = STOCKS.get(s).getStockName();
+        System.out.println("~~~~~ STOCK FOLD ~~~~~" + temp);
+        statusLabel.setText(temp + " has gone out of business and is off the market!");
+        STOCKS.remove(s);
+        pSTOCKS[s] = 0;
+        for(int i = 0;i < AIs.size();i++){
+            int[] x = AIs.get(i).getFundStocks();
+            x[s] = 0;
+            AIs.get(i).setFundStocks(x);
+        }
+        boolean unique = false;
+        String n = "";
+        while(unique == false){
+            System.out.println("while loop");
+            n = "";
+            n += randName1.get(r.nextInt(randName1.size())) + " " + SNAME2[r.nextInt(nameNum)];
+            for(int i = 0;i<STOCKS.size();i++){
+                if(!STOCKS.get(i).getStockName().equals(n)){
+                    System.out.println("New stock name: " + n);
+                    unique = true;
+                    break;
+                }
+            }           
+        }
+        Stock newStock = new Stock(n);
+        stockNames[s] = n;
+        STOCKS.add(s, newStock);
+        //pSTOCKS[s] = newStock;
+        initLabels();
+        stockPicker.getItems().remove(s);
+        stockPicker.getItems().add(s, n);
+        System.out.println("With " + temp + " folding, " + STOCKS.get(s).getStockName() + " has been added to the market!");       
+        statusLabel.setText("With " + temp + " folding, " + STOCKS.get(s).getStockName() + " has been added to the market!");
+        stockBacks.get(die1).setBackground(bgSBN);
+    }
+    
+    private void stockSplit(int s){
+        
+    }
+    
     @FXML void quitButtonAction(ActionEvent event) {                    
         log.updateBank();
         log.writeFund();
@@ -390,13 +775,12 @@ public class HFMController implements Initializable{
     }
 
     private void volumeControl(){
-        pEQUITY = 0;
+        pEQUITY = BigDecimal.ZERO;
         for(int i = 0;i < 9;i++){
             STOCKVOL[i] = 0;
             STOCKVOL[i] += pSTOCKS[i];           
-            pEQUITY += pSTOCKS[i];
+            pEQUITY = pEQUITY.add(STOCKS.get(i).getStockValue().multiply(new BigDecimal(pSTOCKS[i])));
         }
-        
         for(int f = 0;f < 5;f++){
             FundAI fai = (FundAI) AIs.get(0);
             int[] a1 = fai.getFundStocks();
@@ -407,12 +791,44 @@ public class HFMController implements Initializable{
         }
     }
     
+    private void initBacks(){
+        stockBacks.add(stockPane1);
+        stockBacks.add(stockPane2);
+        stockBacks.add(stockPane3);
+        stockBacks.add(stockPane4);
+        stockBacks.add(stockPane5);
+        stockBacks.add(stockPane6);
+        stockBacks.add(stockPane7);
+        stockBacks.add(stockPane8);
+        stockBacks.add(stockPane9);
+        stockBackD.add(bgSBD1);
+        stockBackD.add(bgSBD2);
+        stockBackD.add(bgSBD3);
+        stockBackD.add(bgSBD4);
+        stockBackD.add(bgSBD5);
+        stockBackD.add(bgSBD6);
+        stockBackD.add(bgSBD7);
+        stockBackD.add(bgSBD8);
+        stockBackD.add(bgSBD9);
+        stockBackU.add(bgSBU1);
+        stockBackU.add(bgSBU2);
+        stockBackU.add(bgSBU3);
+        stockBackU.add(bgSBU4);
+        stockBackU.add(bgSBU5);
+        stockBackU.add(bgSBU6);
+        stockBackU.add(bgSBU7);
+        stockBackU.add(bgSBU8);
+        stockBackU.add(bgSBU9);
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         initArrays();
-        setLabels();
-        choseStock = FXCollections.observableArrayList(stockNames);
+        initLabels();
+        playerEquity.setText("$" + pEQUITY.toString());
+        //choseStock = FXCollections.observableArrayList(stockNames);
         stockPicker.getItems().addAll(stockNames);
-        actionPicker.setItems(FXCollections.observableArrayList("Buy", "Sell"));        
+        actionPicker.setItems(FXCollections.observableArrayList("Buy", "Sell"));    
+        initBacks();
     }
 }

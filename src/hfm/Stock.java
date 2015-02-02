@@ -15,9 +15,12 @@ public class Stock implements java.io.Serializable {
     private BigDecimal stockValue;
     private BigDecimal stockHigh;
     private BigDecimal stockLow;
+    private boolean isHalt;
+    private int HALT;
 
     public Stock(String s){
-        
+        isHalt = false;
+        HALT = 0;
         stockName = s;
         stockValue = new BigDecimal(10.00);
         stockHigh = new BigDecimal(10.00);
@@ -53,6 +56,16 @@ public class Stock implements java.io.Serializable {
 
     public void setStockLow(BigDecimal stockLow) {
         this.stockLow = stockLow;
-    }        
+    }
+    
+    public boolean isHalt(int t) {
+        if(t > HALT) isHalt = false;
+        return isHalt;
+    }
+
+    public void setHalt(boolean halt, int i) {
+        this.isHalt = halt;
+        HALT = i;
+    }
 // END
 }

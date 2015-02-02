@@ -28,7 +28,10 @@ public class Logon {
     
     public void infoCheck(){    
         dirCheck = new File("K:\\Table Games\\Chipper\\java");
-        if(dirCheck.exists()) FUND = new File("K:\\Table Games\\Chipper\\java","FUND");
+        if(dirCheck.exists()){
+            FUND = new File("K:\\Table Games\\Chipper\\java","FUND");
+            System.out.println("K:\\Table Games\\Chipper\\java\\FUND");
+        }
         if(dirCheck.exists()) dirTrue = true;
         else {
             System.out.println("DIRECTORY DOES NOT EXIST! Using current DIR.");
@@ -45,6 +48,7 @@ public class Logon {
             in.close();
             fileIn.close();
         }catch(IOException e){
+            //e.printStackTrace();
             System.err.println("readFund IO Error: File FUND not found.");
             return;
         }catch(ClassNotFoundException cnf){
@@ -144,7 +148,7 @@ public class Logon {
                 return false;
             }
         }
-        funds.add(new Fund(n,p,1000,new int[9]));
+        funds.add(new Fund(n,p,10000,new int[9]));
         writeFund();
         return true;
     }
