@@ -1,6 +1,7 @@
 
 package hfm;
 
+import static hfm.HFMController.AIs;
 import static hfm.HFMController.STOCKS;
 import static hfm.HFMController.pCASH;
 import java.io.IOException;
@@ -67,6 +68,7 @@ public class HFMLoginController {
                         log.updateBank();
                         log.writeFund();
                         log.writeStocks(STOCKS);
+                        log.writeAIs(AIs);                        
                         System.out.println("New External Close bank record: " + pCASH);
                         System.exit(0);
                     }

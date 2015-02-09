@@ -13,13 +13,15 @@ public class Logon {
     
     ArrayList<Fund> funds;
     ArrayList<Stock> stocks;
-    File dirCheck, FUND, STOCKS;
+    ArrayList<FundAI> ais;
+    File dirCheck, FUND, STOCKS, AIS;
     Fund player;
     Boolean dirTrue;
     
     public Logon(){
         funds = new ArrayList<>();
         stocks = new ArrayList<>();
+        ais = new ArrayList<>();
         infoCheck();
         readFund();
         //readStocks();
@@ -30,7 +32,6 @@ public class Logon {
         dirCheck = new File("K:\\Table Games\\Chipper\\java");
         if(dirCheck.exists()){
             FUND = new File("K:\\Table Games\\Chipper\\java","FUND");
-            System.out.println("K:\\Table Games\\Chipper\\java\\FUND");
         }
         if(dirCheck.exists()) dirTrue = true;
         else {
@@ -120,11 +121,11 @@ public class Logon {
         HFMController.STOCKS = stocks;
     }
     
-    public void writeStocks(ArrayList a){
+    public void writeStocks(ArrayList a){       
         infoCheck();
         stocks = a;
         String listName = "STOCKS" + player.getName();
-        File fileName = new File(listName);
+        File fileName;
         if(dirTrue == true){
             fileName = new File("K:\\Table Games\\Chipper\\java",listName);
         } else fileName = new File(listName);         
@@ -137,6 +138,62 @@ public class Logon {
             System.out.println("Serialized arraylist data is saved in " + listName);
         }catch(IOException e){
             System.err.println("writeStocks failed.");
+            e.printStackTrace();
+        }
+    }
+    
+    public void readAIs(){
+        infoCheck();
+        String saveAIs = "AIS" + player.getName();
+        File saveFile;
+        if(dirTrue == true){
+            saveFile = new File("K:\\Table Games\\Chipper\\java",saveAIs);
+        } else saveFile = new File(saveAIs);
+        if(!saveFile.exists()){
+             System.err.println("readAIs: File " + saveAIs + " not found.");
+            return;
+        }
+        try{
+            FileInputStream fileIn = new FileInputStream(saveFile);
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            ais = (ArrayList) in.readObject();
+            in.close();
+            fileIn.close();
+        }catch(IOException e){
+            System.err.println("readAIs IO Error: File " + saveAIs + " not found.");
+            return;
+        }catch(ClassNotFoundException cnf){
+            cnf.printStackTrace();
+            System.err.println("Class Not Found Error: not sure what this is...");
+            return;
+        }
+        for(int i = 0;i<ais.size();i++){
+            FundAI ai = (FundAI) ais.get(i);
+            System.out.println("AI Name: " + ai.getFundName());
+            System.out.println("AI Type: " + ai.getType());
+            System.out.println("AI Value: " + ai.getValue());
+            System.out.println("AI Cash: " + ai.getFundCash());
+        }
+        HFMController.AIs = ais;
+    }
+    
+    public void writeAIs(ArrayList a){
+        infoCheck();
+        ais = a;
+        String listName = "AIS" + player.getName();
+        File fileName;
+        if(dirTrue == true){
+            fileName = new File("K:\\Table Games\\Chipper\\java",listName);
+        } else fileName = new File(listName);         
+        try{
+            FileOutputStream fileOut = new FileOutputStream(fileName);
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);          
+            out.writeObject(ais);
+            out.close();
+            fileOut.close();
+            System.out.println("Serialized arraylist data is saved in " + listName);
+        }catch(IOException e){
+            System.err.println("writeAIs failed.");
             e.printStackTrace();
         }
     }
